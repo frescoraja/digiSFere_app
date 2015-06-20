@@ -1,0 +1,26 @@
+.new-listing-form {
+  position: relative;
+  top: -10px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.new-listing-submit {
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
+  width: 100px;
+  bottom: -110px;
+}
+
+
+.listing-img-goes-here img {
+  height: 90px;
+  width: 120px;
+  margin-right: 10px;
+  border: 1px solid black;
+  border-radius: 2px;
+  box-shadow: grey 1px 1px 1px;
+}

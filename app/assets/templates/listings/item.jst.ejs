@@ -1,0 +1,7 @@
+<div class="list-item <%= window.LTYPES[listing.escape('category')] %>">
+  <img class="listing-logo" src="/assets/<%= listing.escape('category') %>-lilogo.png" />
+  <div class="listing-item-info">
+    <strong class="category-title"><%= window.LTYPES[listing.get('category')] %></strong>
+    <a href="#/listings/<%= listing.id %>/"><%= listing.escape('title') %></a>
+  </div>
+</div>

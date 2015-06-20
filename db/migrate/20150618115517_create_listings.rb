@@ -8,7 +8,7 @@ class CreateListings < ActiveRecord::Migration
     	t.float :latitude
     	t.string :img_url
     	t.string :website
-    	t.integer :type, null: false
+    	t.integer :category, null: false
 
     	t.timestamps
     end
@@ -16,6 +16,6 @@ class CreateListings < ActiveRecord::Migration
     add_index :listings, :title
     add_index :listings, :about
     add_index :listings, :address
-    add_index :listings, :type
+    add_index :listings, :category
   end
 end

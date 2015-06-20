@@ -1,0 +1,111 @@
+<div class="main clearfix">
+  <div class="button-container">
+    <button class="enter-site">Enter digiSFere...</button>
+  </div>
+
+  <div class="footer">
+    <span>
+      <ul class="footer-links">
+        <li>
+          <a href="http://www.linkedin.com/in/djcomputer">
+            <img src="<%= asset_path('linkedin.png') %>" />
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/frescoraja">
+            <img src="<%= asset_path('github.png') %>" />
+          </a>
+        </li>
+      </ul>
+    </span>
+  </div>
+</div>
+<div class="new-session-form">
+  <div class="welcome-form">
+    <h1>Log In</h1>
+
+    <form action="<%= session_url %>" method="post">
+      <%= csrf_token %>
+      <div class="row">
+        <input type="text"
+               name="user[username]"
+               id="login-username">
+      </div>
+      <div class="row">
+        <input type="password"
+               name="user[password]"
+               id="login-password">
+      </div>
+      <input class="sign-in-btn" type="submit" value="Sign In">
+    </form>
+    <form action="<%= session_url %>" method="post">
+      <%= csrf_token %>
+      <input type="hidden" name="user[username]" value="Guest">
+    	<input type="hidden" name="user[password]" value="password">
+      <input type="submit" value="Guest Sign In">
+    </form>
+    <p class="toggle-form">
+      Want to sign up?
+    </p>
+  </div>
+</div>
+
+<div class="new-user-form">
+  <div class="welcome-form">
+    <h1>Sign Up</h1>
+    <form action="<%= users_url %>" method="POST">
+      <%= csrf_token %>
+        <input type="text"
+               name="user[username]"
+               id="username"
+               placeholder="username">
+
+        <input type="password"
+               name="user[password]"
+               id="password"
+               placeholder="password">
+
+      <input class="new-user-btn" type="submit" value="Create User">
+    </form>
+    <div class="errors">
+    </div>
+  </div>
+</div>
+
+<script>
+var main = function () {
+  $('.enter-site').click(function () {
+    $('.new-session-form').addClass('visible');
+  });
+
+  $('#password').keyup(function () {
+    var passwordLength = $(this).val().length;
+    if (passwordLength <= 5 && passwordLength > 0) {
+      $('#password').css('color','red');
+      $('.errors')
+        .text('Password too short. Must be 6 characters or longer.');
+    } else if (passwordLength > 5){
+      $('#password').css('color', 'white');
+      $('.errors').empty();
+    }
+  });
+
+  $('.toggle-form').click(function () {
+    $('.new-session-form').removeClass('visible');
+    $('.new-user-form').addClass('visible');
+  });
+
+  $('body').click(function (event) {
+    var posX = event.pageX,
+        posY = event.pageY,
+        width = $(window).width()-185;
+    if (posX > 300 && posX < width || (posX > width && posY > 53)) {
+      $('.visible').removeClass('visible');
+      $('.errors').empty();
+      $('input').empty();
+    }
+  });
+}
+
+$(document).ready(main);
+</script>

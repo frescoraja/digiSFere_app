@@ -1,6 +1,23 @@
 DigiSFere.Collections.Listings = Backbone.Collection.extend({
-	url: '/api/listings',
+	url: '/api/listings/search',
+
   model: DigiSFere.Models.Listing,
+
+	initialize: function (){
+		this.hiddenTypes = [];
+		this.filterData = {
+			lat: [37.67767358309138, 37.8887756788066],
+      lng: [-122.56501542968749, -122.26838457031249],
+			query: "",
+			category: this.hiddenTypes
+		};
+	},
+
+	filter: function () {
+		this.fetch({
+			data: { filter_data: this.filterData }
+		});
+	},
 
   getOrFetch: function (id) {
   	var listing = this.get(id),

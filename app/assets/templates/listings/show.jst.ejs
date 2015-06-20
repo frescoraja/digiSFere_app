@@ -1,0 +1,32 @@
+<div class="listing-show">
+  <img class="listing-img" src="<%= listing.escape('img_url') %>" />
+  <hr>
+  <section class="listing-show-info">
+    <p><h3>Listing type: <%= LTYPES[listing.escape('category')] %></h3></p>
+    <hr>
+    <p><h3><%= listing.escape('title') %></h3></p>
+    <h4><strong>Description</h4></strong>
+    <p><h5><%= listing.escape('description') %></h5></p>
+  <hr>
+    <h3>
+  </section>
+</div>
+<div class="maps-views">
+  <div class="street-view">
+    <iframe
+      width="360"
+      height="360"
+      src="https://www.google.com/maps/embed/v1/streetview?key=<%= GOOGLE_API_KEY %>&location=<%= listing.escape('latitude') %>,<%= listing.escape('longitude') %>">
+    </iframe>
+  </div>
+  <div class="map-view">
+    <iframe
+      width="360"
+      height="360"
+      src="https://www.google.com/maps/embed/v1/place?key=<%= GOOGLE_API_KEY %>&q=<%= listing.escape('address') %>">
+    </iframe>
+  </div>
+</div>
+<div class="info-wrapper">
+
+</div>

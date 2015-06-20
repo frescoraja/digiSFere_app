@@ -14,7 +14,9 @@ window.DigiSFere = {
     });
 
 
-    var searchBarView = new DigiSFere.Views.SearchBar();
+    var searchBarView = new DigiSFere.Views.SearchBar({
+      collection: listings
+    });
 
     $('#searchbar').html(searchBarView.render().$el);
 

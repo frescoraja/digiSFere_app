@@ -1,0 +1,50 @@
+ul.listings-list {
+  padding-left: 35px;
+  padding-top: 35px;
+  font-family: 'Josefin Slab', serif;
+  list-style: none;
+}
+
+.listing-logo {
+  float: left;
+  display: inline-block;
+  height: 45px;
+  padding: 5px;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
+.list-item {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.listing-item-info {
+  padding-left: 15px;
+}
+
+.category-title {
+  float: left;
+  display: block;
+  clear: right;
+}
+
+.JOB img.listing-logo {
+  background-color: #5297ff;
+}
+
+.STARTUP img.listing-logo {
+  background-color: #e74848;
+}
+
+.COMPANY img.listing-logo {
+  background-color: #ffe663;
+}
+
+.WORKSPACE img.listing-logo {
+  background-color: #79faa1;
+}
+
+.EVENT img.listing-logo {
+  background-color: #c481ff;
+}

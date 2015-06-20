@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.geocomplete
+//= require upload_img_widget
 //= require underscore
 //= require serializejson
 //= require backbone

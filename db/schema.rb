@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618001412) do
+ActiveRecord::Schema.define(version: 20150618145954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,15 +24,26 @@ ActiveRecord::Schema.define(version: 20150618001412) do
     t.float    "latitude"
     t.string   "img_url"
     t.string   "website"
-    t.integer  "type",       null: false
+    t.integer  "category",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "listings", ["about"], name: "index_listings_on_about", using: :btree
   add_index "listings", ["address"], name: "index_listings_on_address", using: :btree
+  add_index "listings", ["category"], name: "index_listings_on_category", using: :btree
   add_index "listings", ["longitude", "latitude"], name: "index_listings_on_longitude_and_latitude", using: :btree
   add_index "listings", ["title"], name: "index_listings_on_title", using: :btree
-  add_index "listings", ["type"], name: "index_listings_on_type", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.string   "session_token",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   root to: "site#root"
-  
+  get "/home", to: "site#welcome"
   namespace :api, defaults: { format: :json } do
-    resources :listings, only: [:create, :index, :show]
+    get "/listings/search", to: "listings#search"
+    get "/listings/count", to: "listings#count"
+    resources :listings, only: [:create, :index, :search]
   end
+
+  resources :users, only: [:create]
+  resource :session, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
