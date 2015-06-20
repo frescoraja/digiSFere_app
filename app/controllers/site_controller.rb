@@ -4,7 +4,7 @@ class SiteController < ApplicationController
     render :root
   end
 
-  def welcome
-    render :welcome
+  def home
+    render :home
   end
 end

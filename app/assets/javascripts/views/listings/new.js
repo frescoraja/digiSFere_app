@@ -4,7 +4,7 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
   className: 'new-listing',
 
   events: {
-    'click .new-listing-submit': 'addNewListing',
+    'click .new-listing-submit': 'addNewListing'
   },
 
   addNewListing: function (event) {
@@ -16,7 +16,7 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
     newListing.save({}, {
       success: function () {
         listings.add(newListing);
-        Backbone.history.navigate('', { trigger: true });
+        this.remove();
       }
     });
   },

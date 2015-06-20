@@ -1,4 +1,4 @@
-DigiSFere.Views.Filterbar = Backbone.View.extend({
+DigiSFere.Views.FilterBar = Backbone.View.extend({
   className: 'filterbar-view',
 
   template: JST['main/filterbar'],

@@ -5,15 +5,15 @@ DigiSFere.Views.Main = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.addListingsView();
-    this.addFilterbarView();
+    this.addFilterBarView();
     this.addMapView();
   },
 
-  addFilterbarView: function () {
-    var filterbarView = new DigiSFere.Views.Filterbar({
+  addFilterBarView: function () {
+    var filterBarView = new DigiSFere.Views.FilterBar({
       collection: this.collection
     });
-    this.addSubview('.filterbar', filterbarView);
+    this.addSubview('.filterbar', filterBarView);
   },
 
   addListingsView: function () {

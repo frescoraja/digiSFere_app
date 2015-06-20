@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: "site#root"
-  get "/home", to: "site#welcome"
+  get "/home", to: "site#home"
   namespace :api, defaults: { format: :json } do
     get "/listings/search", to: "listings#search"
     get "/listings/count", to: "listings#count"
