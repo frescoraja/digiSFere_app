@@ -8,6 +8,8 @@ window.DigiSFere = {
 
     var $rootEl = $('#content');
     var listings = new DigiSFere.Collections.Listings();
+    listings.fetch();
+
     new DigiSFere.Routers.Router({
       $rootEl: $rootEl,
       listings: listings

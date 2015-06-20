@@ -27,7 +27,8 @@ body {
   background-color: #eee;
 }
 
-a, a:hover, a:visited {
+a, a:hover, a:visited, a:active {
+  color: #333;
   text-decoration: none;
 }
 

@@ -3,7 +3,7 @@ DigiSFere.Views.ListingItem = Backbone.View.extend({
 
   tagName: 'li',
 
-  className: 'listing-item-view',
+  className: 'listing-item-view clearfix',
 
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);

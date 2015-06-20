@@ -6,6 +6,12 @@
   color: #eee;
 }
 
+a.new, a.new:hover,
+a.new:visited, a.new:active {
+  color: #eee;
+  text-decoration: none;
+}
+
 .filterbar-view {
   position: relative;
   height: 100%;
@@ -24,7 +30,7 @@
   display: inline-block;
   text-align: center;
   position: relative;
-  font-family: 'Josefin Slab', serif;
+  font-family: 'Josefin Sans', serif;
   font-size: 1.25em;
 }
 
@@ -34,7 +40,7 @@
 }
 
 .filterbar-tile:hover {
-  background-color: #444;
+  background-color: #333;
   cursor: pointer;
 }
 
@@ -101,7 +107,7 @@
 }
 
 .clicked {
-  background-color: #444;
+  background-color: #555;
   color: #999;
   border-bottom: 4px solid #888;
   span, .glyphicon {
