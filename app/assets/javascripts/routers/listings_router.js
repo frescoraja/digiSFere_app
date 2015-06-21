@@ -29,7 +29,7 @@ DigiSFere.Routers.Router = Backbone.Router.extend({
 	},
 
   newListingImg: function () {
-    cloudinary.openUploadWidget(CLOUDINARY_SETTINGS,
+    cloudinary.openUploadWidget(window.CLOUDINARY_SETTINGS,
     function(error, result) {
       if (!error) {
         var url = result[0].url;

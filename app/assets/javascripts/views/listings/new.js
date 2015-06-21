@@ -24,6 +24,7 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
+    this.$('.address').geocomplete();
     return this;
   }
 });
