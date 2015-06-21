@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     get "/listings/search", to: "listings#search"
     get "/listings/count", to: "listings#count"
-    resources :listings, only: [:create, :index, :search]
+    resources :listings, only: [:create, :search]
   end
 
   resources :users, only: [:create]

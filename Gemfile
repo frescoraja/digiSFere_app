@@ -15,6 +15,7 @@ gem 'jquery-slick-rails'
 gem 'backbone-on-rails'
 gem 'font-awesome-rails'
 gem 'figaro'
+gem 'kaminari'
 gem 'newrelic_rpm'
 
 group :development, :test do

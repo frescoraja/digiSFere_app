@@ -12,13 +12,8 @@ class Api::ListingsController < ApplicationController
 		render json: Listing.where(category: params[:category]).count
 	end
 
-	def index
-		@listings = Listing.all
-		render json: @listings
-	end
-
 	def search
-    @listings = filter_listings(filter_options)
+    @listings = filter_listings(filter_options).order(:category)
     render json: @listings
   end
 
@@ -60,6 +55,7 @@ class Api::ListingsController < ApplicationController
 			results = Listing.where(listings[:title].matches(qry)
 											 .or(listings[:about].matches(qry)
 											 .or(listings[:website].matches(qry))))
+											 .where.not(category: binds[:category])
 
 		else
 			results = Listing.where.not(category: binds[:category])

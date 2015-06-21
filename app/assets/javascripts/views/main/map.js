@@ -11,6 +11,8 @@ DigiSFere.Views.Map = Backbone.View.extend({
                    "marker4.png",
                    "marker5.png"];
     this._markers = {};
+
+    this._genStyles();
   },
 
   addMarker: function (listing) {
@@ -46,7 +48,7 @@ DigiSFere.Views.Map = Backbone.View.extend({
   },
 
   setBounds: function () {
-    var bounds = this._map.getBounds()
+    var bounds = this._map.getBounds();
     var ne = bounds.getNorthEast();
     var sw = bounds.getSouthWest();
     this.collection.filterData.lat = [sw.lat(), ne.lat()];
@@ -57,7 +59,6 @@ DigiSFere.Views.Map = Backbone.View.extend({
 
   showMarkerInfo: function (event, marker, model) {
     var mapInfoView = new DigiSFere.Views.MapInfo({
-
       model: model
     });
 
@@ -72,9 +73,14 @@ DigiSFere.Views.Map = Backbone.View.extend({
   showMap: function () {
     var mapOptions = {
       center: { lat: 37.7833, lng: -122.4167 },
-      zoom: 14
+      zoom: 14,
+      mapTypeControlOptions: {
+        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+      }
     };
     this._map = new window.google.maps.Map(this.el, mapOptions);
+    this._map.mapTypes.set('map_style', this._styledMap);
+    this._map.setMapTypeId('map_style');
     this.attachMapListeners();
   },
 
@@ -83,5 +89,101 @@ DigiSFere.Views.Map = Backbone.View.extend({
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
     google.maps.event.addListener(this._map, 'idle', this.setBounds.bind(this));
+  },
+
+  _genStyles: function () {
+    this._styles = [
+      {
+        "featureType": "water",
+        "elementType": "geometry.fill",
+        "stylers": [
+          { "visibility": "on" },
+          { "color": "#9aa8e6" },
+          { "lightness": 5 },
+          { "saturation": 18 },
+          { "gamma": 0.88 }
+        ]
+      },{
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          { "saturation": -49 },
+          { "color": "#f6f7ff" },
+          { "gamma": 0.96 },
+          { "lightness": -3 },
+          { "visibility": "on" }
+        ]
+      },{
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+          { "visibility": "on" },
+          { "color": "#8080a1" },
+          { "lightness": 94 }
+        ]
+      },{
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.fill",
+        "stylers": [
+          { "visibility": "on" },
+          { "color": "#efeff0" },
+          { "lightness": 13 },
+          { "gamma": 0.43 }
+        ]
+      },{
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [
+          { "color": "#ffffff" },
+          { "lightness": 38 },
+          { "visibility": "on" }
+        ]
+      },{
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "road.local",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          { "saturation": 100 },
+          { "color": "#ffffff" },
+          { "visibility": "off" }
+        ]
+      },{
+        "featureType": "poi",
+        "elementType": "geometry.fill",
+        "stylers": [
+          { "visibility": "on" },
+          { "color": "#c8c8d8" }
+        ]
+      },{
+        "featureType": "poi",
+        "elementType": "labels.text",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          { "visibility": "on" },
+          { "color": "#808080" },
+          { "weight": 0.3 }
+        ]
+      },{
+        "featureType": "poi",
+        "elementType": "labels.icon",
+        "stylers": [
+          { "visibility": "off" }
+        ]
+      },{
+      }
+    ];
+
+    this._styledMap = new google.maps.StyledMapType(this._styles,
+                                                    { name: 'Styled Map'});
   }
+
 });
