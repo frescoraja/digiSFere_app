@@ -1,5 +1,6 @@
 .new-session-form,
 .new-user-form {
+  font-family: 'Roboto', serif;
   text-align: center;
   color: white;
   position: absolute;
@@ -12,6 +13,7 @@
 }
 
 .errors {
+  font-family: 'Roboto', serif;
   position: absolute;
   top:0;
   transition: content 200ms ease-in-out;
@@ -27,7 +29,7 @@
   top: 0;
   right: 0;
   font-size: 20px;
-  font-family: "";
+  font-family: 'Roboto', serif;
 }
 
 .enter-site {
@@ -88,13 +90,13 @@
 
 .new-user-form input,
 .new-session-form input {
+  font-family: 'Roboto', serif;
   color: white;
   background-color: rgba(0,0,0,0);
   text-align: center;
   border-style: none;
   padding: 4px 10px 4px 10px;
   margin: 5px 1px 3px 0px;
-  font-family: "";
   font-size: 20px;
   border-radius: 10px;
   border: 1px solid white;
