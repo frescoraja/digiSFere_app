@@ -1,10 +1,11 @@
 DigiSFere.Views.NewListing = Backbone.View.extend({
   template: JST['listings/new'],
 
-  className: 'new-listing',
+  className: 'new-listing-modal',
 
   events: {
-    'click .new-listing-submit': 'addNewListing'
+    'click .new-listing-submit': 'addNewListing',
+    'click .img-upload': 'newListingImg'
   },
 
   addNewListing: function (event) {
@@ -17,6 +18,23 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
       success: function () {
         listings.add(newListing);
         this.remove();
+      }
+    });
+  },
+
+  newListingImg: function () {
+    event.preventDefault();
+    cloudinary.openUploadWidget(window.CLOUDINARY_SETTINGS,
+    function(error, result) {
+      if (!error) {
+        var url = result[0].url;
+        $listingImg = $('<img>').attr('src', url);
+        $listingImg.load(function () {
+          $('.listing-img-goes-here').append($listingImg);
+          $('#listing-img_url').val(url);
+        });
+      } else {
+        console.log(error);
       }
     });
   },

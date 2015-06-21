@@ -91,6 +91,16 @@ DigiSFere.Views.Map = Backbone.View.extend({
     google.maps.event.addListener(this._map, 'idle', this.setBounds.bind(this));
   },
 
+  startBounce: function (id) {
+    var marker = this._markers[id];
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  },
+
+  stopBounce: function (id) {
+    var marker = this._markers[id];
+    marker.setAnimation(null);
+  },
+
   _genStyles: function () {
     this._styles = [
       {

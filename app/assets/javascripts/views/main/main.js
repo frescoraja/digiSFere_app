@@ -4,9 +4,9 @@ DigiSFere.Views.Main = Backbone.CompositeView.extend({
   className: 'content-view',
 
   initialize: function () {
-    this.addListingsView();
-    this.addFilterBarView();
     this.addMapView();
+    this.addFilterBarView();
+    this.addListingsView();
   },
 
   addFilterBarView: function () {
@@ -18,17 +18,18 @@ DigiSFere.Views.Main = Backbone.CompositeView.extend({
 
   addListingsView: function () {
     var listingsView = new DigiSFere.Views.ListingsIndex({
-      collection: this.collection
+      collection: this.collection,
+      map: this.mapView
     });
     this.addSubview('.listingsindex', listingsView);
   },
 
   addMapView: function () {
-    var mapView = new DigiSFere.Views.Map({
+    this.mapView = new DigiSFere.Views.Map({
       collection: this.collection
     });
-    this.addSubview('.map', mapView);
-    mapView.showMap();
+    this.addSubview('.map', this.mapView);
+    this.mapView.showMap();
   },
 
   render: function () {

@@ -7,7 +7,8 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
     "click .banner-input-placeholder": "hidePlaceholder",
     "blur .banner-input-field": "revealPlaceholder",
     "submit .banner-input": "triggerSearch",
-    "click .banner-search-button": "initiateSearch"
+    "click .banner-search-button": "initiateSearch",
+    "keyup .banner-input-field": "triggerSearch"
   },
 
   hidePlaceholder: function (event) {
@@ -38,9 +39,11 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
   triggerSearch: function (event) {
     event.preventDefault();
     var searchParams = $('.banner-input-field').val();
-    $('.banner-input-field').blur();
     this.collection.filterData.query = searchParams;
     console.log(this.collection.filterData);
     this.collection.filter();
+    if (event.keyCode === 13) {
+      $('.banner-input-field').blur();
+    }    
   }
 });

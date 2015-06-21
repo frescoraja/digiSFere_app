@@ -9,6 +9,7 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
 
   events: {
     'click .category': 'categoryFilter',
+    'click .new-listing': 'showNewListingModal'
   },
 
   count: function () {
@@ -33,6 +34,15 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
     }
     this.collection.filter();
     this.count();
+  },
+
+  showNewListingModal: function () {
+    this.modalView = this.modalView ||
+      new DigiSFere.Views.NewListing({
+        collection: this.collection
+      });
+    $('body').prepend(this.modalView.render().$el);
+    this.modalView.delegateEvents();
   },
 
   render: function () {

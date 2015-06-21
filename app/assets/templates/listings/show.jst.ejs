@@ -1,29 +1,44 @@
+
 <div class="listing-show">
-  <img class="listing-img" src="<%= listing.escape('img_url') %>" />
-  <hr>
   <section class="listing-show-info">
-    <p><h3>Listing type: <%= LTYPES[listing.escape('category')] %></h3></p>
+    <%= LTYPES[listing.escape('category')] %>
+    <p class="listing-title">
+      <h1><%= listing.escape('title') %></h1>
+    </p>
+    <img class="listing-img" src="<%= listing.escape('img_url') %>" />
     <hr>
-    <p><h3><%= listing.escape('title') %></h3></p>
-    <h4><strong>Description</h4></strong>
-    <p><h5><%= listing.escape('description') %></h5></p>
-  <hr>
-    <h3>
+    <p class="section-title">
+      <h4>
+        <strong>OVERVIEW</strong>
+      </h4>
+    </p>
+    <div class="Visit"
+    <p class="section-content">
+      <%= listing.escape('address') %>
+    </p>
+    <p class="section-title">
+      <h4>
+        <strong>DETAILS</strong>
+      </h4>
+    <p class="section-content">
+      <%= listing.escape('description') %>
+    </p>
+    <hr>
   </section>
 </div>
 <div class="maps-views">
-  <div class="street-view">
-    <iframe
-      width="360"
-      height="360"
-      src="https://www.google.com/maps/embed/v1/streetview?key=<%= GOOGLE_API_KEY %>&location=<%= listing.escape('latitude') %>,<%= listing.escape('longitude') %>">
-    </iframe>
-  </div>
   <div class="map-view">
     <iframe
-      width="360"
-      height="360"
-      src="https://www.google.com/maps/embed/v1/place?key=<%= GOOGLE_API_KEY %>&q=<%= listing.escape('address') %>">
+      width="100%"
+      height="500px"
+      src="https://www.google.com/maps/embed/v1/place?key=<%= GOOGLE_API_KEY %>&q=<%= listing.escape('address') %>&zoom=15">
+    </iframe>
+  </div>
+  <div class="street-view">
+    <iframe
+      width="100%"
+      height="280px"
+      src="https://www.google.com/maps/embed/v1/streetview?key=<%= GOOGLE_API_KEY %>&location=<%= listing.escape('latitude') %>,<%= listing.escape('longitude') %>">
     </iframe>
   </div>
 </div>

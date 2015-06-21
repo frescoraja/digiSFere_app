@@ -21,7 +21,8 @@
       theme: 'minimal'
     }
 
-    window.LTYPES = ["listings", "JOB", "STARTUP", "EVENT", "WORKSPACE", "COMPANY"]
+    window.LTYPES = ["listings", "JOB", "STARTUP", "EVENT", "WORKSPACE", "COMPANY"];
+    window.GOOGLE_API_KEY = '<%= ENV['google_maps_api_key'] %>';
   </script>
   <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?libraries=places,key=<%= api_key %>">

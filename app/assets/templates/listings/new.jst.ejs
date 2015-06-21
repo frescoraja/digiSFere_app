@@ -1,56 +1,55 @@
-<div class="container">
-	<div class="new-listing-modal">
-		<div class="new-listing-form">
-		<a href="#" class="back"><< go back </a>
-			<h3>Add New Listing</h3>
-			<form class="form new-listing">
-				<div class="form group">
-					<label>Title:</label>
-					<input type="text"
-							 	 class="form-control"
-							 	 name="listing[title]">
-				</div>
+<div class="new-listing-backdrop"></div>
 
-				<div class="form-group">
-					<label>Description</label>
-					<textarea class="form-control"
-										name="listing[about]"></textarea>
-				</div>
+<div class="new-listing-container">
+	<div class="new-listing-form">
+		<h3>Add New Listing</h3>
+		<form class="form new-listing">
+			<div class="form group">
+				<label>Title:</label>
+				<input type="text"
+						 	 class="form-control"
+						 	 name="listing[title]">
+			</div>
 
-				<div class="form-group">
-					<label>Address</label>
-					<input type="text"
-								 class="form-control address"
-							 	 name="listing[address]">
-				</div>
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control description"
+									name="listing[about]"></textarea>
+			</div>
 
-				<div class="form-group">
-					<select class="form-control" name="listing[category]">
-						<option value=1>Job</option>
-						<option value=2>Startup</option>
-						<option value=3>Event</option>
-						<option value=4>Workspace</option>
-						<option value=5>Company</option>
-					</select>
-				</div>
+			<div class="form-group">
+				<label>Address</label>
+				<input type="text"
+							 class="form-control address"
+						 	 name="listing[address]">
+			</div>
 
-				<div class="form-group">
-					<label>Website</label>
-					<input type="text"
-								 class="form-control"
-							 	 name="listing[website]"
-								 placeholder="www.example.com">
-				</div>
+			<div class="form-group">
+				<select class="form-control" name="listing[category]">
+					<option value=1>Job</option>
+					<option value=2>Startup</option>
+					<option value=3>Event</option>
+					<option value=4>Workspace</option>
+					<option value=5>Company</option>
+				</select>
+			</div>
 
-				<div class="new-listing-img-upload">
-					<input type="hidden"
-								 name="listing[img_url]"
-								 id="listing-img_url">
-					<a href="#/listings/img" class="img-upload">Upload an image..</a>
-					<div class="listing-img-goes-here pull-right"></div>
-				</div>
-				<a href="#" class="btn btn-primary new-listing-submit">Submit</a>
-			</form>
-		</div>
+			<div class="form-group">
+				<label>Website</label>
+				<input type="text"
+							 class="form-control"
+						 	 name="listing[website]"
+							 placeholder="www.example.com">
+			</div>
+
+			<div class="new-listing-img-upload">
+				<input type="hidden"
+							 name="listing[img_url]"
+							 id="listing-img_url">
+				<a href="#/listings/img" class="img-upload">Upload an image..</a>
+				<div class="listing-img-goes-here pull-right"></div>
+			</div>
+			<a href="javascript:void(0)" class="btn btn-primary new-listing-submit">Submit</a>
+		</form>
 	</div>
 </div>

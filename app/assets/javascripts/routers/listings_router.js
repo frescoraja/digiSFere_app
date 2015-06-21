@@ -6,9 +6,7 @@ DigiSFere.Routers.Router = Backbone.Router.extend({
 
 	routes: {
 		"": "main",
-		"listings/img": "newListingImg",
-    "listings/new": "addNewListing",
-		"listing/:id/": "showListing"
+		"listings/:id": "showListing"
 	},
 
 	main: function () {
@@ -20,33 +18,9 @@ DigiSFere.Routers.Router = Backbone.Router.extend({
 		this._swapView(mainView);
 	},
 
-	addNewListing: function () {
-		var newListingView = new DigiSFere.Views.NewListing({
-			collection: this.listings
-		});
-
-		this.$rootEl.find('.results-container').html(newListingView.render().$el);
-	},
-
-  newListingImg: function () {
-    cloudinary.openUploadWidget(window.CLOUDINARY_SETTINGS,
-    function(error, result) {
-      if (!error) {
-        var url = result[0].url;
-        $listingImg = $('<img>').attr('src', url);
-        $listingImg.load(function () {
-          $('.listing-img-goes-here').append($listingImg);
-          $('#listing-img_url').val(url);
-        });
-      } else {
-        console.log(error);
-      }
-    });
-	},
-
 	showListing: function (id) {
 		var listing = this.listings.getOrFetch(id);
-		var showView = new DigiSFere.Views.ShowListing({
+		var showView = new DigiSFere.Views.ListingShow({
 			model: listing
 		});
 

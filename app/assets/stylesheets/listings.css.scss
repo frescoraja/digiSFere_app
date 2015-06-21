@@ -23,8 +23,15 @@ ul.listings-list {
   padding-bottom: 10px;
 }
 
+.listing-item-view:hover {
+  cursor: pointer;
+  background-color: #eef;
+  border-bottom: 1px solid #aaa;
+}
+
 .listing-item-view {
   padding-top: 15px;
+  border-bottom: 1px solid #eee;
 }
 
 .listing-item-info {
