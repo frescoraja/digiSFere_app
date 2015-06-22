@@ -17,7 +17,8 @@ window.DigiSFere = {
 
 
     var searchBarView = new DigiSFere.Views.SearchBar({
-      collection: listings
+      collection: listings,
+      $results: $('.content-main')
     });
 
     $('#searchbar').html(searchBarView.render().$el);

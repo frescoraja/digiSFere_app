@@ -41,7 +41,7 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
       new DigiSFere.Views.NewListing({
         collection: this.collection
       });
-    $('body').prepend(this.modalView.render().$el);
+    $('html').append(this.modalView.render().$el);
     this.modalView.delegateEvents();
   },
 

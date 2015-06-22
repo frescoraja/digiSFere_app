@@ -32,7 +32,6 @@ DigiSFere.Views.Map = Backbone.View.extend({
       this.infoWindow && this.infoWindow.close();
       view.showMarkerInfo(event, marker, model);
     }.bind(this));
-
     this._markers[listing.id] = marker;
   },
 
@@ -53,7 +52,6 @@ DigiSFere.Views.Map = Backbone.View.extend({
     var sw = bounds.getSouthWest();
     this.collection.filterData.lat = [sw.lat(), ne.lat()];
     this.collection.filterData.lng = [sw.lng(), ne.lng()];
-
 		this.collection.filter();
 	},
 

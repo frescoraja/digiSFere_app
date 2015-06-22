@@ -48,7 +48,6 @@ DigiSFere.Views.Main = Backbone.View.extend({
     this.$('.filterbar').html(this.filterBarView.$el);
     this.listingsIndex.render();
     this.filterBarView.render();
-
     return this;
   }
 });
