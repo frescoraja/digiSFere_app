@@ -8,9 +8,19 @@ class Api::ListingsController < ApplicationController
 		end
 	end
 
+	def index
+		@listings = filter_listings(filter_options)
+		render json: @listings
+	end
+
 	def search
-    @listings = filter_listings(filter_options).order(:category)
-    render json: @listings
+    @listings = filter_listings(filter_options).order('category')
+		render json: @listings
+    # render :json => {
+		# 	:models => @listings,
+		# 	:page => params[:page],
+		# 	:total_pages => @listings.total_pages
+		# }
   end
 
 	def show

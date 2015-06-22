@@ -33,7 +33,6 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
       filters.splice(idx, 1);
     }
     this.collection.filter();
-    this.count();
   },
 
   showNewListingModal: function () {
@@ -41,7 +40,7 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
       new DigiSFere.Views.NewListing({
         collection: this.collection
       });
-    $('html').append(this.modalView.render().$el);
+    $('body').append(this.modalView.render().$el);
     this.modalView.delegateEvents();
   },
 

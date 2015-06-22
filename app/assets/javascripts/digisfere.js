@@ -8,17 +8,14 @@ window.DigiSFere = {
 
     var $rootEl = $('#content');
     var listings = new DigiSFere.Collections.Listings();
-    listings.fetch();
 
     new DigiSFere.Routers.Router({
       $rootEl: $rootEl,
       listings: listings
     });
 
-
     var searchBarView = new DigiSFere.Views.SearchBar({
-      collection: listings,
-      $results: $('.content-main')
+      collection: listings
     });
 
     $('#searchbar').html(searchBarView.render().$el);

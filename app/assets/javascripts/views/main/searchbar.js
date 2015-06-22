@@ -1,18 +1,14 @@
 DigiSFere.Views.SearchBar = Backbone.View.extend({
   template: JST['main/searchbar'],
 
-  className: 'searchbar-view',
-
-  intialize: function (options) {
-    this.$results = options.$results;
-  },
+  className: 'searchbar-view col-xs-10 col-xs-offset-1',
 
   events: {
-    "click .banner-input-placeholder": "hidePlaceholder",
-    "blur .banner-input-field": "revealPlaceholder",
-    "submit .banner-input": "triggerSearch",
-    "click .banner-search-button": "initiateSearch",
-    "keyup .banner-input-field": "triggerSearch"
+    'click .banner-input-placeholder': 'hidePlaceholder',
+    'blur .banner-input-field': 'revealPlaceholder',
+    'submit .banner-input': 'triggerSearch',
+    'click .banner-search-button': 'checkSearchParams',
+    'keyup .banner-input-field': 'triggerSearch'
   },
 
   hidePlaceholder: function (event) {
@@ -20,7 +16,7 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
     $('.banner-input-field').focus();
   },
 
-  initiateSearch: function (event) {
+  checkSearchParams: function (event) {
     event.preventDefault();
     if ($('.banner-input-field').val() === '') {
       return;
@@ -45,14 +41,14 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
     var searchParams = $('.banner-input-field').val();
     this.collection.filterData.query = searchParams;
     this.collection.filter();
-    if (event.type === "keyup" && event.keyCode === 13) {
+    if (event.type === 'keyup' && event.keyCode === 13) {
       $('.banner-input-field').blur();
       if ($('.content-main').length === 0) {
-        Backbone.history.navigate('/', { trigger: true });
+        Backbone.history.navigate('', { trigger: true });
       }
-    } else if (event.type === "submit") {
+    } else if (event.type === 'submit') {
       if ($('.content-main').length === 0) {
-        Backbone.history.navigate('/', { trigger: true });
+        Backbone.history.navigate('', { trigger: true });
       }
     }
   }

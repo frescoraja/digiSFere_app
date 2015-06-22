@@ -1,40 +1,52 @@
 DigiSFere.Views.Map = Backbone.View.extend({
   attributes: {
-    id: "map-canvas"
+    id: 'map-canvas'
   },
 
   initialize: function () {
-    this._icons = ["marker0.png",
-                   "marker1.png",
-                   "marker2.png",
-                   "marker3.png",
-                   "marker4.png",
-                   "marker5.png"];
+    this.location = 'San Francisco, CA';
+    this._colors = ['#eeeeee',
+                    '#5297ff',
+                    '#e74848',
+                    '#c481ff',
+                    '#79faa1',
+                    '#ffe663'];
     this._markers = {};
-
+    this._listings = [];
     this._genStyles();
+    this.createMap();
   },
+
+  template: JST['map/map'],
+
 
   addMarker: function (listing) {
     if (this._markers[listing.id]) { return; }
     var view = this;
-    var iconPath = this._icons[listing.get('category')];
-    var model = listing;
-
+    var mColor = this._colors[listing.get('category')];
     var marker = new google.maps.Marker({
       position: { lat: listing.get('latitude'), lng: listing.get('longitude') },
       map: this._map,
-      title: listing.get('title'),
-      icon: "/assets/" + iconPath
+      content: listing.get('title'),
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: 7,
+        strokeColor: mColor,
+        fillColor: mColor,
+        strokeWeight: 10,
+        strokeOpacity: .5,
+        fillOpacity: 1
+      }
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
-      this.infoWindow && this.infoWindow.close();
-      view.showMarkerInfo(event, marker, model);
-    }.bind(this));
+      view.infoWindow && view.infoWindow.close();
+      view.showMarkerInfo(event, marker, listing);
+    });
+
+    this._listings.push(listing);
     this._markers[listing.id] = marker;
   },
-
 
   closeInfoWindow: function() {
     this.infoWindow && this.infoWindow.close();
@@ -42,8 +54,10 @@ DigiSFere.Views.Map = Backbone.View.extend({
 
   removeMarker: function (listing) {
     var marker = this._markers[listing.id];
-    marker.setMap(null);
-    delete this._markers[listing.id];
+    if (marker) {
+      marker.setMap(null);
+      delete this._markers[listing.id];
+    }
   },
 
   setBounds: function () {
@@ -68,8 +82,13 @@ DigiSFere.Views.Map = Backbone.View.extend({
     this.infoWindow.open(this._map, marker);
   },
 
-  showMap: function () {
+  createMap: function () {
+
     var mapOptions = {
+      disableDefaultUI: true,
+      panControl: false,
+      zoomControl: true,
+      scaleControl: true,
       center: { lat: 37.7833, lng: -122.4167 },
       zoom: 14,
       mapTypeControlOptions: {
@@ -82,6 +101,13 @@ DigiSFere.Views.Map = Backbone.View.extend({
     this.attachMapListeners();
   },
 
+  render: function () {
+    var content= this.template();
+    this.createMap();
+    this.$el.html(content);
+    return this;
+  },
+
   attachMapListeners: function () {
     this.listenTo(this._map, 'click', this.closeInfoWindow.bind(this));
     this.listenTo(this.collection, 'add', this.addMarker);
@@ -89,102 +115,101 @@ DigiSFere.Views.Map = Backbone.View.extend({
     google.maps.event.addListener(this._map, 'idle', this.setBounds.bind(this));
   },
 
-  startBounce: function (id) {
+  toggleBounce: function (id) {
     var marker = this._markers[id];
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  },
-
-  stopBounce: function (id) {
-    var marker = this._markers[id];
-    marker.setAnimation(null);
+    if (marker.getAnimation() != null) {
+      marker.setAnimation(null);
+    } else {
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
   },
 
   _genStyles: function () {
     this._styles = [
       {
-        "featureType": "water",
-        "elementType": "geometry.fill",
-        "stylers": [
-          { "visibility": "on" },
-          { "color": "#9aa8e6" },
-          { "lightness": 5 },
-          { "saturation": 18 },
-          { "gamma": 0.88 }
+        'featureType': 'water',
+        'elementType': 'geometry.fill',
+        'stylers': [
+          { 'visibility': 'on' },
+          { 'color': '#9aa8e6' },
+          { 'lightness': 5 },
+          { 'saturation': 18 },
+          { 'gamma': 0.88 }
         ]
       },{
-        "featureType": "road.highway",
-        "elementType": "geometry.stroke",
-        "stylers": [
-          { "saturation": -49 },
-          { "color": "#f6f7ff" },
-          { "gamma": 0.96 },
-          { "lightness": -3 },
-          { "visibility": "on" }
+        'featureType': 'road.highway',
+        'elementType': 'geometry.stroke',
+        'stylers': [
+          { 'saturation': -49 },
+          { 'color': '#f6f7ff' },
+          { 'gamma': 0.96 },
+          { 'lightness': -3 },
+          { 'visibility': 'on' }
         ]
       },{
-        "featureType": "road.highway",
-        "elementType": "geometry.fill",
-        "stylers": [
-          { "visibility": "on" },
-          { "color": "#8080a1" },
-          { "lightness": 94 }
+        'featureType': 'road.highway',
+        'elementType': 'geometry.fill',
+        'stylers': [
+          { 'visibility': 'on' },
+          { 'color': '#8080a1' },
+          { 'lightness': 94 }
         ]
       },{
-        "featureType": "landscape.man_made",
-        "elementType": "geometry.fill",
-        "stylers": [
-          { "visibility": "on" },
-          { "color": "#efeff0" },
-          { "lightness": 13 },
-          { "gamma": 0.43 }
+        'featureType': 'landscape.man_made',
+        'elementType': 'geometry.fill',
+        'stylers': [
+          { 'visibility': 'on' },
+          { 'color': '#efeff0' },
+          { 'lightness': 13 },
+          { 'gamma': 0.43 }
         ]
       },{
-        "featureType": "road.arterial",
-        "elementType": "geometry.fill",
-        "stylers": [
-          { "color": "#ffffff" },
-          { "lightness": 38 },
-          { "visibility": "on" }
+        'featureType': 'road.arterial',
+        'elementType': 'geometry.fill',
+        'stylers': [
+          { 'color': '#ffffff' },
+          { 'lightness': 38 },
+          { 'visibility': 'on' }
         ]
       },{
-        "featureType": "road.arterial",
-        "elementType": "geometry.stroke",
-        "stylers": [
-          { "visibility": "off" }
+        'featureType': 'road.arterial',
+        'elementType': 'geometry.stroke',
+        'stylers': [
+          { 'visibility': 'off' }
         ]
       },{
-        "featureType": "road.local",
-        "elementType": "geometry.stroke",
-        "stylers": [
-          { "saturation": 100 },
-          { "color": "#ffffff" },
-          { "visibility": "off" }
+        'featureType': 'road.local',
+        'elementType': 'geometry.stroke',
+        'stylers': [
+          { 'saturation': 100 },
+          { 'color': '#ffffff' },
+          { 'visibility': 'off' }
         ]
       },{
-        "featureType": "poi",
-        "elementType": "geometry.fill",
-        "stylers": [
-          { "visibility": "on" },
-          { "color": "#c8c8d8" }
+        'featureType': 'poi',
+        'elementType': 'geometry.fill',
+        'stylers': [
+          { 'visibility': 'on' },
+          { 'color': '#c8c8d8' }
         ]
       },{
-        "featureType": "poi",
-        "elementType": "labels.text",
-        "stylers": [
-          { "visibility": "off" }
+        'featureType': 'poi',
+        'elementType': 'labels.text',
+        'stylers': [
+          { 'visibility': 'off' }
         ]
       },{
-        "elementType": "labels.text.stroke",
-        "stylers": [
-          { "visibility": "on" },
-          { "color": "#808080" },
-          { "weight": 0.3 }
+        'elementType': 'labels.text.stroke',
+        'stylers': [
+          { 'visibility': 'on' },
+          { 'color': '#808080' },
+          { 'weight': 0.3 }
         ]
       },{
-        "featureType": "poi",
-        "elementType": "labels.icon",
-        "stylers": [
-          { "visibility": "off" }
+        'featureType': 'poi',
+        'elementType': 'labels.icon',
+        'stylers': [
+          { 'visibility': 'off' }
         ]
       },{
       }

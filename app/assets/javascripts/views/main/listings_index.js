@@ -4,8 +4,8 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 	template: JST['listings/index'],
 
 	events: {
-		'mouseenter .list-item': 'startBounce',
-		'mouseleave .list-item': 'stopBounce'
+		'mouseenter .list-item': 'toggleBounce',
+		'mouseleave .list-item': 'toggleBounce'
 	},
 
 	initialize: function (options) {
@@ -27,21 +27,15 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 		this.removeModelSubview('.listings-list', listing);
 	},
 
-	startBounce: function (event) {
+	toggleBounce: function (event) {
 		var listingId = $(event.currentTarget).data('id');
-		this._map.startBounce(listingId);
-	},
-
-	stopBounce: function (event) {
-		var listingId = $(event.currentTarget).data('id');
-		this._map.stopBounce(listingId);
+		this._map.toggleBounce(listingId);
 	},
 
 	render: function () {
 		var content = this.template();
 		this.$el.html(content);
 		this.attachSubviews();
-		this.onRender();
 		return this;
 	}
 });

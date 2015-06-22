@@ -192,6 +192,10 @@
       // If listening doesn't exist, this object is not currently
       // listening to obj. Break out early.
       if (!listening) break;
+      //ADDED BY ME TO STOP ERROR WHEN NAVIGATING
+      //not able to remove map subview
+      //error: "listening.obj.off is not a function"
+      if (!listening.obj.off) break;
 
       listening.obj.off(name, callback, this);
     }

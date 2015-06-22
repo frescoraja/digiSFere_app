@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/home", to: "site#home"
   namespace :api, defaults: { format: :json } do
     get "/listings/search", to: "listings#search"
-    resources :listings, only: [:create, :search, :show]
+    resources :listings, only: [:create, :index, :search, :show]
   end
 
   resources :users, only: [:create]

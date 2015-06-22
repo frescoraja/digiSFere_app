@@ -3,7 +3,7 @@ DigiSFere.Views.ListingShow = Backbone.View.extend({
 
   className: 'listing-show-view',
 
-  initialize: function () {
+  initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
   },
 

@@ -34,7 +34,7 @@ a, a:hover, a:visited, a:active, a:focus {
 }
 
 .pac-container {
-  z-index: 10000;
+  z-index: 1002;
 }
 
 .error {
@@ -55,7 +55,7 @@ a, a:hover, a:visited, a:active, a:focus {
   z-index: 1050;
 }
 
-.clearfix {
+.clearfix:after {
   content: "";
   clear: both;
   display: block;
@@ -171,23 +171,23 @@ a, a:hover, a:visited, a:active, a:focus {
 }
 
 
-.footer {
+.personal {
   position: absolute;
   padding: 20px;
   bottom: 0;
   right: 0;
 }
 
-.footer li {
+.personal li {
   padding: 0 25px;
   display: inline-block;
 }
 
-.footer img {
+.personal img {
   height: 60px;
 }
 
-.footer img:hover {
+.personal img:hover {
   opacity: .8;
 }
 
@@ -229,7 +229,7 @@ a.new:focus {
 .filterbar-tile {
   height: 100%;
   margin: 0;
-  padding-top: 10px;
+  padding: 10px 0 0 0;
   display: inline-block;
   text-align: center;
   position: relative;
@@ -252,11 +252,6 @@ a.new:focus {
   top: 4px;
   margin-right: 7px;
   display: inline-block;
-}
-
-.tile-content {
-  width: 100%;
-  height: 100%;
 }
 
 .count {
@@ -368,18 +363,15 @@ ul.listings-list {
 
 .list-item {
   position: relative;
+  padding-top: 10px;
   padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-.listing-item-view:hover {
+.list-item:hover {
   cursor: pointer;
   background-color: rgba(#eeeeff, 0.54);
   border-bottom: 1px solid #aaa;
-}
-
-.listing-item-view {
-  padding-top: 15px;
-  border-bottom: 1px solid #eee;
 }
 
 .listing-item-info {
@@ -418,12 +410,9 @@ ul.listings-list {
 }
 
 #content {
-  position: absolute;
-  top:200px;
-  width: 1200px;
+  padding: 0;
+  min-width: 1050px;
   height: 860px;
-  left: 50%;
-  margin-left: -600px;
   background: #fff;
   box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2),
               -2px 2px 6px 1px rgba(0, 0, 0, 0.2);;
@@ -462,9 +451,9 @@ ul.listings-list {
 }
 
 .new-listing-backdrop {
+  position: fixed;
   background-color: black;
   opacity: .5;
-  position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
@@ -472,28 +461,19 @@ ul.listings-list {
   z-index: 1000;
 }
 
-.new-listing-container {
+.new-listing-form-container {
   font-family: 'Josefin Sans', serif;
-  position: absolute;
+  position: fixed;
   width: 480px;
   height: 640px;
-  top: 50%;
-  margin-top: -340px;
+  top: 10%;
   left: 50%;
+  padding: 10px;
   margin-left: -200px;
   background-color: #fcfcff;
   box-shadow: 2px 2px 10px 2px rgba(0,0,0,.8);
   border-radius: 3px;
-  z-index: 1011;
-}
-
-.new-listing-form {
-  position: relative;
-  height: 100%;
-  padding: 20px;
-  label {
-    margin-bottom: 10px;
-  }
+  z-index: 1001;
 }
 
 .form.group {
@@ -520,21 +500,21 @@ ul.listings-list {
   height: 40px;
   margin: 22px auto;
   a {
+    font-weight: 700;
     color: #eee;
-    position: absolute;
-    margin-left: 27px;
-    padding-top: 13px;
+    float: left;
+    padding-top: 8px;
+    padding-left: 17px;
   }
   span {
-  background-color: #444;
-  color: #ddd;
-  height: 100%;
-  width: 30px;
-  float: right;
-  padding-top: 7px;
-  font-size: 1.6em;
-  font-weight: 700;
-  text-align: center;
+    background-color: #444;
+    color: #ddd;
+    height: 100%;
+    width: 25%;
+    font-size: 1.6em;
+    font-weight: 700;
+    float: right;
+    text-align: center;
   }
 }
 
@@ -561,34 +541,23 @@ ul.listings-list {
 }
 
 #searchbar {
-  position: absolute;
   width: 100%;
   height: 200px;
-  top: 0;
-  left:0;
   font-family: 'Josefin Sans', serif;
   text-shadow: 0 1px 1px #000;
-  z-index: 10;
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4);
   background-size: cover;
   background-position: center;
 }
 
 .searchbar-view {
-  position: absolute;
-  top: 0;
-  margin-left: -600px;
-  width: 1200px;
-  left: 50%;
-  height: 100%;
+  padding: 0 40px;
 }
 
 .banner-logo {
   float: left;
-  img {
-    height: 200px;
-    margin-left: 50px;
-  }
+  height: 200px;
+  padding: 15px;
 }
 
 .banner-search-slogan h1 {
@@ -597,7 +566,7 @@ ul.listings-list {
 
 .banner-search {
   float: right;
-  padding-top: 50px;
+  margin-top: 50px;
   color: white;
   text-shadow: 0px 2px 1px black;
 }
@@ -624,11 +593,11 @@ ul.listings-list {
   cursor: text;
 }
 
-.glyphicon.banner-search-button {
+.banner-search-button {
   position: absolute;
+  padding-top: 7px;
+  padding-left: 15px;
   font-size: 1.5em;
   cursor: pointer;
-  padding-left: 10px;
-  padding-top: 7px;
   text-shadow: 0 2px 1px black;
 }

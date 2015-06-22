@@ -1,6 +1,6 @@
 DigiSFere.Collections.Listings = Backbone.Collection.extend({
   url: '/api/listings/search',
-  
+
   model: DigiSFere.Models.Listing,
 
 	initialize: function (){
@@ -12,7 +12,7 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
 		};
 	},
 
-	comparator: 'category',
+  comparator: 'category',
 
 	filter: function () {
 		this.fetch({
@@ -35,5 +35,12 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
   	}
 
   	return listing;
-  }
+  },
+
+  // parse: function(response) {
+  //   this.page = response.page;
+  //   this.total_pages = response.total_pages;
+  //   this.total_models = response.total_models;
+  //   return response.models;
+  // }
 });

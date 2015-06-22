@@ -10,8 +10,8 @@ DigiSFere.Views.ListingItem = Backbone.View.extend({
   },
 
   initialize: function () {
-    if (this.model.attributes.title.length > 80) {
-      var words = this.model.attributes.title.slice(0, 80);
+    if (this.model.attributes.title.length > 75) {
+      var words = this.model.attributes.title.slice(0, 75);
       words = words.split(' ');
       words = words.slice(0, words.length - 1);
       this.listTitle = words.join(' ').concat('...');
