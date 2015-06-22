@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-</head>
-<body>
   <% if Time.now.hour > 17  || Time.now.hour < 7 %>
     <% img_src = "pm-bannersm.png" %>
+    <% logo_src = "site-logowhite.png" %>
     <% color = "white" %>
     <% s_color = "black" %>
   <% else %>
     <% img_src = "am-bannersm.png" %>
+    <% logo_src = "site-logoblack.png" %>
     <% color = "black" %>
     <% s_color = "white" %>
   <% end %>
+  <script>
+    window.LOGOSRC = '<%= logo_src %>';
+  </script>
+</head>
+<body>
   <div id="searchbar" style="background-image: url('assets/<%= img_src %>'); color:<%= color %>;text-shadow:0 1px 1px <%= s_color %>"></div>
   <div id="content"></div>
 </body>

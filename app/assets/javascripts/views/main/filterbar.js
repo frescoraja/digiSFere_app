@@ -9,7 +9,7 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
 
   events: {
     'click .category': 'categoryFilter',
-    'click .new-listing': 'showNewListingModal'
+    'click .new-listing-tile': 'showNewListingModal'
   },
 
   count: function () {

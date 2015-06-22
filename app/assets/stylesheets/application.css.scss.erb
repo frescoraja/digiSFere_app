@@ -1,0 +1,630 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+html, body {
+  margin: 0;
+  background-color: #eee;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: #eee;
+}
+
+a, a:hover, a:visited, a:active, a:focus {
+  color: #333;
+  text-decoration: none;
+}
+
+.pac-container {
+  z-index: 10000;
+}
+
+.error {
+  color: red;
+  font-size: .8em;
+}
+
+.errors {
+  position: absolute;
+  top: 0;
+  width: 20%;
+  left: 40%;
+  background-color: rgba(255, 255, 255, 0.22);
+  color: rgb(255, 46, 0);
+  text-shadow: rgba(255, 255, 255, 0.34);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  z-index: 1050;
+}
+
+.clearfix {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.new-session-form,
+.new-user-form {
+  font-family: 'Roboto', serif;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  transition: left 200ms ease-in-out;
+  background-image: url("login-bg.jpg");
+}
+
+.errors {
+  font-family: 'Roboto', serif;
+  position: absolute;
+  top:0;
+  transition: content 200ms ease-in-out;
+}
+
+.visible {
+  left: 0px;
+  transition: left 200ms ease-in-out;
+}
+
+.button-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  font-family: 'Roboto', serif;
+}
+
+.enter-site {
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  text-shadow: 0 1px 1px black;
+  border: 1px solid white;
+  border-top: none;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px 15px 14px;
+  margin-right: 40px;
+}
+
+.enter-site:hover {
+  color: rgba( .1, .1, .1, .9);
+  text-shadow: 0 1px 1px white;
+  border-color: rgba( .1, .1, .1, .9);
+}
+
+.enter-site:focus {
+  outline: none;
+}
+
+.new-user-form input[type=text]:hover,
+.new-user-form input[type=password]:hover,
+.new-user-form input[type=submit]:hover,
+.new-user-form textarea:hover,
+.new-session-form input[type=text]:hover,
+.new-session-form input[type=password]:hover,
+.new-session-form input[type=submit]:hover,
+.new-session-form textarea:hover {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 4px 10px 4px 10px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.toggle-form:hover {
+  color: rgba(81, 203, 238, 1);
+  text-shadow: 0 0 1px white;
+  cursor: pointer;
+}
+
+.new-user-form input[type=text]:focus,
+.new-user-form input[type=password]:focus,
+.new-user-form input[type=submit]:focus,
+.new-user-form textarea:focus,
+.new-session-form input[type=text]:focus,
+.new-session-form input[type=password]:focus,
+.new-session-form input[type=submit]:focus,
+.new-session-form textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 4px 10px 4px 10px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+  outline: none;
+}
+
+.new-user-form input,
+.new-session-form input {
+  font-family: 'Roboto', serif;
+  color: white;
+  background-color: rgba(0,0,0,0);
+  text-align: center;
+  border-style: none;
+  padding: 4px 10px 4px 10px;
+  margin: 5px 1px 3px 0px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.welcome-form {
+  padding-top: 100px;
+}
+
+
+.footer {
+  position: absolute;
+  padding: 20px;
+  bottom: 0;
+  right: 0;
+}
+
+.footer li {
+  padding: 0 25px;
+  display: inline-block;
+}
+
+.footer img {
+  height: 60px;
+}
+
+.footer img:hover {
+  opacity: .8;
+}
+
+.main {
+  height: 100%;
+  text-decoration: none;
+  color: white;
+  background-image: url("banner-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+}
+
+.filterbar {
+  position: relative;
+  height: 60px;
+  width: 100%;
+  background-color: #222;
+  color: #eee;
+}
+
+a.new, a.new:hover,
+a.new:visited, a.new:active
+a.new:focus {
+  color: #eee;
+  text-decoration: none;
+}
+
+.filterbar-view {
+  position: relative;
+  height: 100%;
+  border-bottom: 1px solid #222;
+}
+
+.filterbar-view > div:not(:last-child) {
+  border-right: 1px solid #888;
+}
+
+.filterbar-tile {
+  height: 100%;
+  margin: 0;
+  padding-top: 10px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  font-family: 'Josefin Sans', serif;
+  font-size: 1.25em;
+}
+
+.new-listing-tile {
+  border-bottom: 4px solid #888;
+  padding-top: 16px;
+}
+
+.filterbar-tile:hover {
+  background-color: #333;
+  cursor: pointer;
+}
+
+.glyphicon.glyphicon-check {
+  font-size: 1.3em;
+  top: 4px;
+  margin-right: 7px;
+  display: inline-block;
+}
+
+.tile-content {
+  width: 100%;
+  height: 100%;
+}
+
+.count {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.filterbar-tile.startups {
+  border-bottom: 4px solid #e74848;
+}
+
+.filterbar-tile.companies {
+  border-bottom: 4px solid #ffe663;
+}
+
+.filterbar-tile.workspaces {
+  border-bottom: 4px solid #79faa1;
+}
+
+.filterbar-tile.jobs {
+  border-bottom: 4px solid #5297ff;
+}
+
+.filterbar-tile.events {
+  border-bottom: 4px solid #c481ff;
+}
+
+.num-companies, .glyphicon.companies {
+  color: #ffe663;
+}
+
+.num-jobs, .glyphicon.jobs {
+  color: #5297ff;
+}
+
+.num-workspaces, .glyphicon.workspaces {
+  color: #79faa1;
+}
+
+.num-startups, .glyphicon.startups {
+  color: #e74848;
+}
+
+.num-events, .glyphicon.events {
+  color: #c481ff;
+}
+
+.clicked {
+  background-color: #555;
+  color: #999;
+  border-bottom: 4px solid #888;
+  span, .glyphicon {
+    color: #999;
+  }
+}
+
+.listing-show-view {
+  position: relative;
+  padding: 40px;
+  width: 100%;
+  height: 1000px;
+}
+.maps-views {
+  width: 30%;
+  float: right;
+  height: 100%;
+}
+
+.map-view {
+  float: right;
+}
+
+.street-view {
+  float: right;
+}
+
+.listing-show {
+  position: relative;
+  width: 70%;
+  float: left;
+  height: 1000px;
+}
+
+.listing-img {
+  float: right;
+  height: 200px;
+}
+
+.listings-header {
+  height: 32px;
+  width: 100%;
+}
+
+ul.listings-list {
+  font-family: 'Josefin Sans', serif;
+  list-style: none;
+  padding-right: 40px;
+}
+
+.listing-logo {
+  float: left;
+  display: inline-block;
+  height: 45px;
+  padding: 5px;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
+.list-item {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.listing-item-view:hover {
+  cursor: pointer;
+  background-color: rgba(#eeeeff, 0.54);
+  border-bottom: 1px solid #aaa;
+}
+
+.listing-item-view {
+  padding-top: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.listing-item-info {
+  font-size: 16px;
+}
+
+.listing-item-info strong {
+  display: block;
+  font-size: 10px;
+}
+
+.category-title {
+  float: left;
+  display: block;
+  clear: right;
+}
+
+.JOB img.listing-logo {
+  background-color: #5297ff;
+}
+
+.STARTUP img.listing-logo {
+  background-color: #e74848;
+}
+
+.COMPANY img.listing-logo {
+  background-color: #ffe663;
+}
+
+.WORKSPACE img.listing-logo {
+  background-color: #79faa1;
+}
+
+.EVENT img.listing-logo {
+  background-color: #c481ff;
+}
+
+#content {
+  position: absolute;
+  top:200px;
+  width: 1200px;
+  height: 860px;
+  left: 50%;
+  margin-left: -600px;
+  background: #fff;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2),
+              -2px 2px 6px 1px rgba(0, 0, 0, 0.2);;
+}
+
+.results-container {
+  height: 800px;
+}
+
+.content-view {
+  height: 100%;
+}
+
+.listingsindex {
+  width: 34%;
+  height: 100%;
+  left: 0;
+  display: inline-block;
+}
+
+.map {
+  width: 66%;
+  float: right;
+  height: 100%;
+  display: inline-block;
+  padding: 2px;
+}
+
+#map-canvas {
+  height: 100%;
+  border-style: inset;
+}
+
+.listing-info-img {
+  height: 60px;
+}
+
+.new-listing-backdrop {
+  background-color: black;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.new-listing-container {
+  position: absolute;
+  width: 480px;
+  height: 680px;
+  top: 120px;
+  left: 50%;
+  margin-left: -200px;
+  background-color: #fcfcff;
+  box-shadow: 2px 2px 10px 2px rgba(0,0,0,.8);
+  border-radius: 3px;
+  z-index: 1011;
+}
+
+.new-listing-form {
+  position: relative;
+  height: 100%;
+  padding: 20px;
+  label {
+    margin-bottom: 10px;
+  }
+}
+
+.form.group {
+  margin-bottom: 10px;
+}
+
+#description {
+  resize: none;
+}
+
+.description {
+  min-height: 120px;
+}
+
+.new-listing {
+  margin: auto;
+  width: 90%;
+}
+
+.new-listing-submit-container {
+  width: 120px;
+  background-color: #888;
+  height: 40px;
+  margin: 22px auto;
+  a {
+    color: #eee;
+    position: absolute;
+    bottom: 37px;
+    left: 50%;
+    margin-left: -38px;
+  }
+  span {
+  background-color: #444;
+  color: #ddd;
+  height: 100%;
+  width: 30px;
+  float: right;
+  padding-top: 3px;
+  font-size: 1.6em;
+  font-weight: 700;
+  text-align: center;
+  }
+}
+
+.new-listing-submit-container:hover {
+  box-shadow: 0 0 6px  1px rgba(81, 203, 238, 1);
+}
+
+.new-listing-img-upload {
+  height: 100px;
+  padding: 1px 8px;
+}
+
+.img-upload,
+.img-upload:hover {
+  text-decoration: underline;
+}
+
+.listing-img-goes-here img {
+  height: 90px;
+  max-width: 120px;
+  margin-right: 10px;
+  border-radius: 3px;
+  box-shadow: black 0px 0px 3px;
+}
+
+#searchbar {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  top: 0;
+  left:0;
+  font-family: 'Josefin Sans', serif;
+  text-shadow: 0 1px 1px #000;
+  z-index: 10;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4);
+  background-size: cover;
+  background-position: center;
+}
+
+.searchbar-view {
+  position: absolute;
+  top: 0;
+  margin-left: -600px;
+  width: 1200px;
+  left: 50%;
+  height: 100%;
+}
+
+.banner-logo {
+  float: left;
+  img {
+    height: 200px;
+    margin-left: 50px;
+  }
+}
+
+.banner-search-slogan h1 {
+  font-size: 46px;
+}
+
+.banner-search {
+  float: right;
+  padding-top: 50px;
+  color: white;
+  text-shadow: 0px 2px 1px black;
+}
+
+.banner-input {
+  position: relative;
+}
+
+.banner-input-field {
+  font-size: 1.3em;
+  width: 320px;
+  padding: 4px;
+  color: black;
+}
+
+.banner-input-placeholder {
+  position: absolute;
+  text-shadow: none;
+  padding: 8px 0px 6px 12px;
+  font-size: 1.3em;
+  width: 321px;
+  z-index: 10;
+  color: black;
+  cursor: text;
+}
+
+.glyphicon.banner-search-button {
+  position: absolute;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-top: 7px;
+  text-shadow: 0 2px 1px black;
+}

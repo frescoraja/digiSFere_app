@@ -1,3 +1,4 @@
+<%= render partial: './layouts/errors' %>
 <div class="main clearfix">
   <div class="button-container">
     <button class="enter-site">Enter digiSFere...</button>
@@ -47,6 +48,8 @@
     <p class="toggle-form">
       Want to sign up?
     </p>
+    <div class="error">
+    </div>
   </div>
 </div>
 
@@ -67,7 +70,7 @@
 
       <input class="new-user-btn" type="submit" value="Create User">
     </form>
-    <div class="errors">
+    <div class="error">
     </div>
   </div>
 </div>
@@ -82,11 +85,11 @@ var main = function () {
     var passwordLength = $(this).val().length;
     if (passwordLength <= 5 && passwordLength > 0) {
       $('#password').css('color','red');
-      $('.errors')
+      $('.error')
         .text('Password too short. Must be 6 characters or longer.');
     } else if (passwordLength > 5){
       $('#password').css('color', 'white');
-      $('.errors').empty();
+      $('.error').empty();
     }
   });
 

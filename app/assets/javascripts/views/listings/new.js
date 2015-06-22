@@ -3,9 +3,17 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
 
   className: 'new-listing-modal',
 
+  initialize: function () {
+    this._colors = ['categories', '#5297ff',
+                    '#e74848', '#c481ff',
+                    '#79faa1', '#ffe663'];
+  },
+
   events: {
     'click .new-listing-submit': 'addNewListing',
-    'click .img-upload': 'newListingImg'
+    'click .img-upload': 'newListingImg',
+    'click .new-listing-backdrop': 'dismiss',
+    'change #category': 'changeButton',
   },
 
   addNewListing: function (event) {
@@ -18,8 +26,22 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
       success: function () {
         listings.add(newListing);
         this.remove();
+      }.bind(this),
+      errors: function (response) {
+        console.log(response);
       }
     });
+  },
+
+  changeButton: function () {
+    var cValue = this._colors[$('#category').val()];
+    $('.new-listing-submit-container').css('background-color', cValue);
+    $('.new-listing-submit-container').find('a').css('color', '#444');
+    $('.new-listing-submit-container').find('span').css('color', cValue);
+  },
+
+  dismiss: function () {
+    this.remove();
   },
 
   newListingImg: function () {
@@ -28,9 +50,8 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
     function(error, result) {
       if (!error) {
         var url = result[0].url;
-        $listingImg = $('<img>').attr('src', url);
+        $listingImg = $('.list-img').attr('src', url);
         $listingImg.load(function () {
-          $('.listing-img-goes-here').append($listingImg);
           $('#listing-img_url').val(url);
         });
       } else {
@@ -42,6 +63,7 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
+
     this.$('.address').geocomplete();
     return this;
   }

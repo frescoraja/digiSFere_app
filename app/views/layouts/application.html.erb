@@ -20,7 +20,6 @@
       sources: ['local','url'],
       theme: 'minimal'
     }
-
     window.LTYPES = ["listings", "JOB", "STARTUP", "EVENT", "WORKSPACE", "COMPANY"];
     window.GOOGLE_API_KEY = '<%= ENV['google_maps_api_key'] %>';
   </script>
@@ -30,7 +29,8 @@
 </head>
 <body>
 
-<%= yield %>
+  <%= render './layouts/errors' %>
+  <%= yield %>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 <div class="new-listing-container">
 	<div class="new-listing-form">
-		<h3>Add New Listing</h3>
+		<center><h4>Add New Listing</h4></center>
 		<form class="form new-listing">
 			<div class="form group">
 				<label>Title:</label>
@@ -14,7 +14,8 @@
 			<div class="form-group">
 				<label>Description</label>
 				<textarea class="form-control description"
-									name="listing[about]"></textarea>
+									name="listing[about]"
+									id="description"></textarea>
 			</div>
 
 			<div class="form-group">
@@ -25,13 +26,24 @@
 			</div>
 
 			<div class="form-group">
-				<select class="form-control" name="listing[category]">
+				<select class="form-control" name="listing[category]" id="category">
+					<option disabled selected>Select Listing Type</option>
 					<option value=1>Job</option>
 					<option value=2>Startup</option>
 					<option value=3>Event</option>
 					<option value=4>Workspace</option>
 					<option value=5>Company</option>
 				</select>
+			</div>
+
+			<div class="new-listing-img-upload clearfix">
+				<input type="hidden"
+							 name="listing[img_url]"
+							 id="listing-img_url">
+				<a href="javascript:void(0)" class="img-upload">Upload an image..</a>
+				<div class="listing-img-goes-here pull-right">
+					<img src="assets/site-logoblack.png" class="list-img" />
+				</div>
 			</div>
 
 			<div class="form-group">
@@ -41,15 +53,10 @@
 						 	 name="listing[website]"
 							 placeholder="www.example.com">
 			</div>
-
-			<div class="new-listing-img-upload">
-				<input type="hidden"
-							 name="listing[img_url]"
-							 id="listing-img_url">
-				<a href="#/listings/img" class="img-upload">Upload an image..</a>
-				<div class="listing-img-goes-here pull-right"></div>
+			<div class="new-listing-submit-container">
+				<a href="javascript:void(0)" class="new-listing-submit">Submit</a>
+				<span> > </span>
 			</div>
-			<a href="javascript:void(0)" class="btn btn-primary new-listing-submit">Submit</a>
 		</form>
 	</div>
 </div>

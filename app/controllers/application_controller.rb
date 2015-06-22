@@ -11,8 +11,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user!
-    flash.now[:errors] = ["Must be logged in!"]
-    redirect_to home_url unless current_user
+    unless current_user
+      flash.now[:errors] = ["Must be logged in!"]
+      redirect_to home_url
+    end
   end
 
   private
