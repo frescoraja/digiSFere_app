@@ -3,27 +3,34 @@ DigiSFere.Views.ListingItem = Backbone.View.extend({
 
   tagName: 'li',
 
-  className: 'listing-item-view clearfix',
+  className: 'listing-item-view',
 
   events: {
     'click .list-item': 'gotoShow'
   },
 
   initialize: function () {
+    if (this.model.attributes.title.length > 80) {
+      var words = this.model.attributes.title.slice(0, 80);
+      words = words.split(' ');
+      words = words.slice(0, words.length - 1);
+      this.listTitle = words.join(' ').concat('...');
+    } else {
+      this.listTitle = this.model.attributes.title;
+    }
     this.listenTo(this.model, 'sync', this.render);
   },
 
   gotoShow: function (event) {
     event.preventDefault();
     var listingId = $(event.currentTarget).data('id');
-    console.log(listingId);
-    console.log(event.currentTarget);
     Backbone.history.navigate('listings/' + listingId, { trigger: true });
   },
 
   render: function () {
     var content = this.template({
-      listing: this.model
+      listing: this.model,
+      title: this.listTitle
     });
     this.$el.html(content);
     return this;

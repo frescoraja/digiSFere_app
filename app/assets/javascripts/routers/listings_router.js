@@ -10,7 +10,7 @@ DigiSFere.Routers.Router = Backbone.Router.extend({
 	},
 
 	main: function () {
-		this.listings.fetch();
+		this.listings.filter();
 		var mainView = new DigiSFere.Views.Main({
 			collection: this.listings
 		});

@@ -48,11 +48,11 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
     if (event.type === "keyup" && event.keyCode === 13) {
       $('.banner-input-field').blur();
       if ($('.content-main').length === 0) {
-        Backbone.history.navigate('', { trigger: true });
+        Backbone.history.navigate('/', { trigger: true });
       }
     } else if (event.type === "submit") {
       if ($('.content-main').length === 0) {
-        Backbone.history.navigate('', { trigger: true });
+        Backbone.history.navigate('/', { trigger: true });
       }
     }
   }

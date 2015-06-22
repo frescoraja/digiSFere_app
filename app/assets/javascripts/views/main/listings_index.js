@@ -9,7 +9,7 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 	},
 
 	initialize: function (options) {
-		this.map = options.map;
+		this._map = options.map;
 		this.listenTo(this.collection, 'add', this.addListing);
 		this.listenTo(this.collection, 'remove', this.removeListing);
 		this.listenTo(this.collection, 'sync', this.render);
@@ -29,12 +29,12 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 
 	startBounce: function (event) {
 		var listingId = $(event.currentTarget).data('id');
-		this.map.startBounce(listingId);
+		this._map.startBounce(listingId);
 	},
 
 	stopBounce: function (event) {
 		var listingId = $(event.currentTarget).data('id');
-		this.map.stopBounce(listingId);
+		this._map.stopBounce(listingId);
 	},
 
 	render: function () {
