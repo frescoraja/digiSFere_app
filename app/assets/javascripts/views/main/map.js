@@ -34,8 +34,8 @@ DigiSFere.Views.Map = Backbone.View.extend({
         strokeColor: mColor,
         fillColor: mColor,
         strokeWeight: 10,
-        strokeOpacity: .5,
-        fillOpacity: 1
+        strokeOpacity: 0.5,
+        fillOpacity: 0.7
       }
     });
 

@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  */
+<% lcolors = { job: '#5297ff', startup: '#e74848', event: '#c481ff', workspace: '#79faa1', company: '#ffe663' } %>
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -43,16 +45,24 @@ a, a:hover, a:visited, a:active, a:focus {
 }
 
 .errors {
+  font-family: 'Roboto', serif;
+  font-size: 20px;
   position: absolute;
   top: 0;
+  padding: 0;
+  margin: 0;
   width: 20%;
   left: 40%;
-  background-color: rgba(255, 255, 255, 0.22);
+  background-color: rgba(255, 255, 255, 0.42);
   color: rgb(255, 46, 0);
+  text-align: center;
   text-shadow: rgba(255, 255, 255, 0.34);
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   z-index: 1050;
+  li {
+    list-style: none;
+  }
 }
 
 .clearfix:after {
@@ -244,6 +254,7 @@ a.new:focus {
 
 .filterbar-tile:hover {
   background-color: #333;
+  transition: background-color 150ms ease-in-out;
   cursor: pointer;
 }
 
@@ -261,43 +272,43 @@ a.new:focus {
 }
 
 .filterbar-tile.startups {
-  border-bottom: 4px solid #e74848;
+  border-bottom: 4px solid <%= lcolors[:startup] %>;
 }
 
 .filterbar-tile.companies {
-  border-bottom: 4px solid #ffe663;
+  border-bottom: 4px solid <%= lcolors[:company] %>;
 }
 
 .filterbar-tile.workspaces {
-  border-bottom: 4px solid #79faa1;
+  border-bottom: 4px solid <%= lcolors[:workspace] %>;
 }
 
 .filterbar-tile.jobs {
-  border-bottom: 4px solid #5297ff;
+  border-bottom: 4px solid <%= lcolors[:job] %>;
 }
 
 .filterbar-tile.events {
-  border-bottom: 4px solid #c481ff;
+  border-bottom: 4px solid <%= lcolors[:event] %>;
 }
 
 .num-companies, .glyphicon.companies {
-  color: #ffe663;
+  color: <%= lcolors[:company] %>;
 }
 
 .num-jobs, .glyphicon.jobs {
-  color: #5297ff;
+  color: <%= lcolors[:job] %>;
 }
 
 .num-workspaces, .glyphicon.workspaces {
-  color: #79faa1;
+  color: <%= lcolors[:workspace] %>;
 }
 
 .num-startups, .glyphicon.startups {
-  color: #e74848;
+  color: <%= lcolors[:startup] %>;
 }
 
 .num-events, .glyphicon.events {
-  color: #c481ff;
+  color: <%= lcolors[:event] %>;
 }
 
 .clicked {
@@ -372,6 +383,7 @@ ul.listings-list {
   cursor: pointer;
   background-color: rgba(#eeeeff, 0.54);
   border-bottom: 1px solid #aaa;
+  transition: background-color 100ms ease-in;
 }
 
 .listing-item-info {
@@ -389,24 +401,24 @@ ul.listings-list {
   clear: right;
 }
 
-.JOB img.listing-logo {
-  background-color: #5297ff;
+.JOB {
+  background-color: <%= lcolors[:job] %>;
 }
 
-.STARTUP img.listing-logo {
-  background-color: #e74848;
+.STARTUP {
+  background-color: <%= lcolors[:startup] %>;
 }
 
-.COMPANY img.listing-logo {
-  background-color: #ffe663;
+.COMPANY {
+  background-color: <%= lcolors[:company] %>;
 }
 
-.WORKSPACE img.listing-logo {
-  background-color: #79faa1;
+.WORKSPACE {
+  background-color: <%= lcolors[:workspace] %>;
 }
 
-.EVENT img.listing-logo {
-  background-color: #c481ff;
+.EVENT {
+  background-color: <%= lcolors[:event] %>;
 }
 
 #content {
@@ -431,6 +443,11 @@ ul.listings-list {
   height: 100%;
   left: 0;
   display: inline-block;
+  overflow-y: auto;
+}
+
+.listings-header {
+  position: fixed;
 }
 
 .map {
@@ -469,7 +486,7 @@ ul.listings-list {
   top: 10%;
   left: 50%;
   padding: 10px;
-  margin-left: -200px;
+  margin-left: -240px;
   background-color: #fcfcff;
   box-shadow: 2px 2px 10px 2px rgba(0,0,0,.8);
   border-radius: 3px;
@@ -516,6 +533,10 @@ ul.listings-list {
     float: right;
     text-align: center;
   }
+}
+
+.disabled a {
+  cursor: default;
 }
 
 .new-listing-submit-container:hover {
@@ -565,6 +586,7 @@ ul.listings-list {
 }
 
 .banner-search {
+  min-width: 600px;
   float: right;
   margin-top: 50px;
   color: white;
@@ -600,4 +622,54 @@ ul.listings-list {
   font-size: 1.5em;
   cursor: pointer;
   text-shadow: 0 2px 1px black;
+}
+
+.foot-el {
+  height: 200px;
+  padding: 0;
+  font-family: 'Josefin Sans', serif;
+  font-size: 14px;
+  background-color: #222;
+  color: #fff;
+}
+
+.hzbar {
+  background-color: rgba(131, 154, 255, 0.14);
+  height: 20px;
+  display: block;
+}
+
+.fcontent-main {
+  margin-top: 40px;
+}
+
+.flogo-img {
+  margin-top: 10px;
+  height: 140px;
+}
+
+.madeinca {
+  border-radius: 3px;
+  margin-top: 54px;
+  height: 72px;
+}
+
+.linkbadge {
+  margin-left: 23px;
+  height: 64px;
+}
+
+.copyright {
+  float: left;
+}
+
+.nyc {
+  float: right;
+}
+.nyc a {
+  color: #008cff;
+}
+
+.nyc a:hover {
+  color: #0072a3
 }

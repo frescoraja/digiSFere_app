@@ -1,4 +1,5 @@
 class Api::ListingsController < ApplicationController
+	before_action :require_user!
 	def create
 		@listing = Listing.new(listing_params)
 		if @listing.save
@@ -8,19 +9,9 @@ class Api::ListingsController < ApplicationController
 		end
 	end
 
-	def index
-		@listings = filter_listings(filter_options)
-		render json: @listings
-	end
-
 	def search
     @listings = filter_listings(filter_options).order('category')
 		render json: @listings
-    # render :json => {
-		# 	:models => @listings,
-		# 	:page => params[:page],
-		# 	:total_pages => @listings.total_pages
-		# }
   end
 
 	def show
@@ -58,14 +49,13 @@ class Api::ListingsController < ApplicationController
 		listings = Arel::Table.new(:listings)
 		if binds[:query].length > 0
 			qry = "%#{binds[:query]}%"
-			results = Listing.where(listings[:title].matches(qry)
+			listings = Listing.where(listings[:title].matches(qry)
 											 .or(listings[:about].matches(qry)
 											 .or(listings[:website].matches(qry))))
-											 .where.not(category: binds[:category])
 
-		else
-			results = Listing.where.not(category: binds[:category])
 		end
+		results = Listing.where(listings[:category].not_in(binds[:category]))
+
 
 		if binds[:lng_min].to_f > binds[:lng_max].to_f
 			# Wrap around the International Date Line

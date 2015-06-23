@@ -27,14 +27,22 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
         listings.add(newListing);
         this.remove();
       }.bind(this),
-      errors: function (response) {
-        console.log(response);
+      error: function (model, response) {
+        $errs = $('<ul>').addClass("errors");
+        $('body').prepend($errs);
+        response.responseJSON.forEach(function (error) {
+          $errs.append($('<li>').text(error));
+        });
+        setTimeout(function () {
+          $('.errors').remove();
+        }, 2000);
       }
     });
   },
 
   changeButton: function () {
     var cValue = this._colors[$('#category').val()];
+    $('.new-listing-submit-container').removeClass('disabled');
     $('.new-listing-submit-container').css('background-color', cValue);
     $('.new-listing-submit-container').find('a').css('color', '#444');
     $('.new-listing-submit-container').find('span').css('color', cValue);
