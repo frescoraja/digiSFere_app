@@ -12,7 +12,6 @@ DigiSFere.Views.Map = Backbone.View.extend({
                     '#79faa1',
                     '#ffe663'];
     this._markers = {};
-    this._listings = [];
     this._genStyles();
     this.createMap();
   },
@@ -44,7 +43,6 @@ DigiSFere.Views.Map = Backbone.View.extend({
       view.showMarkerInfo(event, marker, listing);
     });
 
-    this._listings.push(listing);
     this._markers[listing.id] = marker;
   },
 

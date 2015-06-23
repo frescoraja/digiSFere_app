@@ -39,7 +39,7 @@
     <iframe
       width="100%"
       height="500px"
-      src="https://www.google.com/maps/embed/v1/place?key=<%= GOOGLE_API_KEY %>&q=<%= listing.escape('address') %>">
+      src="https://www.google.com/maps/embed/v1/place?key=<%= GOOGLE_API_KEY %>&q=<%= encodeURIComponent(listing.get('address')) %>">
     </iframe>
   </div>
   <div class="street-view">
