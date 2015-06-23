@@ -12,8 +12,6 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
 		};
 	},
 
-  comparator: 'category',
-
 	filter: function () {
 		this.fetch({
 			data: { filter_data: this.filterData }
@@ -35,12 +33,5 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
   	}
 
   	return listing;
-  },
-
-  // parse: function(response) {
-  //   this.page = response.page;
-  //   this.total_pages = response.total_pages;
-  //   this.total_models = response.total_models;
-  //   return response.models;
-  // }
+  }
 });

@@ -1,22 +1,24 @@
 
 <div class="listing-show">
+  <div class="go-back"><span class="backarrow"><</span>
+    <a class="back-link" href="#">Go Back</a>
+  </div>
   <section class="listing-show-info">
     <%= LTYPES[listing.escape('category')] %>
+    <div class="divider"></div>
     <p class="listing-title">
-      <h1><%= listing.escape('title') %></h1>
+      <%= listing.escape('title') %>
     </p>
-    <img class="listing-img" src="<%= listing.escape('img_url') %>" />
-    <hr>
+    <div class="divider"></div>
     <p class="section-title">
       <h4>
         <strong>OVERVIEW</strong>
       </h4>
     </p>
-    <div class="Visit"
     <p class="section-content">
       <%= listing.escape('address') %>
     </p>
-    <hr>
+    <div class="divider"></div>
     <p class="section-title">
       <h4>
         <strong>DETAILS</strong>
@@ -24,7 +26,13 @@
     <p class="section-content">
       <%= listing.escape('about') %>
     </p>
-    <hr>
+    <div class="divider"></div>
+    <div class="moreinfo">
+      <a class="web-url"
+         href="http://<%= listing.get('website')%>">More Information</a>
+      <span class="go-to">></span>
+    </div>
+    <img class="listing-img" src="<%= listing.escape('img_url') %>" />
   </section>
 </div>
 <div class="maps-views">
@@ -32,7 +40,7 @@
     <iframe
       width="100%"
       height="500px"
-      src="https://www.google.com/maps/embed/v1/place?key=<%= GOOGLE_API_KEY %>&q=<%= listing.escape('address') %>&zoom=15">
+      src="https://www.google.com/maps/embed/v1/place?key=<%= GOOGLE_API_KEY %>&q=<%= listing.escape('address') %>">
     </iframe>
   </div>
   <div class="street-view">

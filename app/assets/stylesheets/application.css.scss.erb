@@ -25,8 +25,9 @@ html, body {
 }
 
 .divider {
-  width: 100%;
-  height: 2px;
+  width: 80%;
+  margin: 25px 0;
+  height: 1px;
   background-color: #eee;
 }
 
@@ -135,7 +136,7 @@ a, a:hover, a:visited, a:active, a:focus {
 .new-session-form input[type=password]:hover,
 .new-session-form input[type=submit]:hover,
 .new-session-form textarea:hover {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  box-shadow: 0 0 5px 1px rgba(81, 203, 238, 1);
   padding: 4px 10px 4px 10px;
   margin: 5px 1px 3px 0px;
   border: 1px solid rgba(81, 203, 238, 1);
@@ -155,7 +156,7 @@ a, a:hover, a:visited, a:active, a:focus {
 .new-session-form input[type=password]:focus,
 .new-session-form input[type=submit]:focus,
 .new-session-form textarea:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  box-shadow: 0 0 5px 1px rgba(81, 203, 238, 1);
   padding: 4px 10px 4px 10px;
   margin: 5px 1px 3px 0px;
   border: 1px solid rgba(81, 203, 238, 1);
@@ -344,11 +345,6 @@ a.new:focus {
   position: relative;
   width: 70%;
   float: left;
-}
-
-.listing-img {
-  float: right;
-  height: 200px;
 }
 
 .listings-header {
@@ -540,7 +536,7 @@ ul.listings-list {
 }
 
 .new-listing-submit-container:hover {
-  box-shadow: 0 0 6px  1px rgba(81, 203, 238, 1);
+  box-shadow: 0 0 5px  2px rgba(81, 203, 238, 1);
 }
 
 .new-listing-img-upload {
@@ -622,6 +618,95 @@ ul.listings-list {
   font-size: 1.5em;
   cursor: pointer;
   text-shadow: 0 2px 1px black;
+}
+
+.listing-show-view {
+  font-family: 'Josefin Sans', serif;
+}
+
+.listing-show-info {
+  padding-top: 20px;
+}
+
+.listing-img {
+  float: right;
+  height: 200px;
+  margin: 20px 90px 0 0;
+}
+
+.go-back {
+  font-size: 1.5em;
+  font-weight: 700;
+  background-color: #444;
+  color: #eee;
+  width: 150px;
+  height: 40px;
+  a {
+    color: #eee;
+  }
+  a:hover {
+    color: #eee;
+  }
+}
+
+.moreinfo {
+  float: left;
+  font-size: 1.5em;
+  font-weight: 700;
+  background-color: #444;
+  color: #eee;
+  width: 200px;
+  height: 40px;
+  margin-top: 60px;
+  margin-left: 100px;
+  a {
+    margin-top: 6px;
+    margin-left: 10px;
+    float: left;
+    color: #eee;
+  }
+  a:hover {
+    color: #eee;
+  }
+  span {
+    font-size: 1.4em;
+    height: 100%;
+    padding: 0 6px;
+    background-color: rgb(69, 109, 179);
+    color: black;
+    float: right;
+  }
+}
+
+.go-back:hover, .moreinfo:hover {
+  cursor: pointer;
+  box-shadow: 0 0 5px 2px rgba(81, 203, 238, 1);
+  outline: none;
+}
+
+.backarrow {
+  float: left;
+  height: 100%;
+  font-size: 1.4em;
+  padding-left: 9px;
+  padding-right: 9px;
+  background-color: rgb(184, 86, 86);
+  color: black;
+}
+
+.back-link {
+  float: right;
+  margin-top: 8px;
+  margin-right: 24px;
+}
+
+.section-content {
+  margin: 20px 90px 20px 40px;
+}
+
+.listing-title {
+  font-size: 2.5em;
+  margin: 30px 0;
 }
 
 .foot-el {

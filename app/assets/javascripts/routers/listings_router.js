@@ -19,7 +19,6 @@ DigiSFere.Routers.Router = Backbone.Router.extend({
 	},
 
 	showListing: function (id) {
-		this.listings = new DigiSFere.Collections.Listings();
 		var listing = this.listings.getOrFetch(id);
 		var showView = new DigiSFere.Views.ListingShow({
 			model: listing
