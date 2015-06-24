@@ -4,7 +4,7 @@
     <div class="flogo col-xs-2">
       <img class="flogo-img" src="/assets/site-logowhite.png"/>
     </div>
-    <div class="fcontent-main col-xs-6">
+    <div class="fcontent-main col-xs-5">
       <a href="https://www.github.com/frescoraja">
         <img class="linkbadge" src="/assets/octocat.png" />
       </a>
@@ -20,8 +20,12 @@
         </span>
       </p>
     </div>
+    <div class="sign-out col-xs-1">
+      <%= link_to 'Sign Out', session_url, method: :delete %>
+    </div>
     <div class="col-xs-2 pull-right">
       <img class="madeinca" src="/assets/madeinca.jpg" />
     </div>
   </div>
+
 </div>
