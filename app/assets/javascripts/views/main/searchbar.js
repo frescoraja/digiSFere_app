@@ -41,14 +41,10 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
     var searchParams = $('.banner-input-field').val();
     this.collection.filterData.query = searchParams;
     this.collection.filter();
-    if (event.type === 'keyup' && event.keyCode === 13) {
+    if (event.type === 'submit') {
       $('.banner-input-field').blur();
-      if ($('.content-main').length === 0) {
-        Backbone.history.navigate('/', { trigger: true });
-      }
-    } else if (event.type === 'submit') {
-      if ($('.content-main').length === 0) {
-        Backbone.history.navigate('/', { trigger: true });
+      if ($('.content-view').length === 0) {
+        Backbone.history.navigate('', { trigger: true });
       }
     }
   }

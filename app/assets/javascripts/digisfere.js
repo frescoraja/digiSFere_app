@@ -4,8 +4,6 @@ window.DigiSFere = {
   Views: {},
   Routers: {},
   initialize: function() {
-    console.log('Welcome to digiSFere!');
-
     var $rootEl = $('#content');
     var listings = new DigiSFere.Collections.Listings();
 
