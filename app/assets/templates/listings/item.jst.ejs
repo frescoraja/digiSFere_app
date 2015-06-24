@@ -1,9 +1,13 @@
-<div class="list-item" data-id="<%= listing.id %>">
-  <img class="listing-logo <%= window.LTYPES[listing.escape('category')] %>"
+<div class="list-item clearfix" data-id="<%= listing.id %>">
+  <div class="listing-logo-holder">
+    <img class="listing-logo <%= window.LTYPES[listing.escape('category')] %>"
        src="/assets/<%= listing.escape('category') %>-lilogo.png" />
+  </div>
   <div class="listing-item-info">
-    <strong class="category-title"><%= LTYPES[listing.get('category')] %></strong>
-    <br>
-    <a href="javascript:void(0)" class="show-info"><%= title %></a>
+    <p>
+      <strong class="category-title"><%= LTYPES[listing.get('category')] %></strong>
+      <br>
+      <a href="javascript:void(0)" class="show-info"><%= title %></a>
+    </p>
   </div>
 </div>
