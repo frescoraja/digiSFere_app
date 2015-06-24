@@ -24,13 +24,6 @@ html, body {
   background-color: #eee;
 }
 
-.divider {
-  width: 80%;
-  margin: 25px 0;
-  height: 1px;
-  background-color: #eee;
-}
-
 a, a:hover, a:visited, a:active, a:focus {
   color: #333;
   text-decoration: none;
@@ -636,11 +629,15 @@ ul.listings-list {
 }
 
 .listing-img {
-  float: right;
-  height: 200px;
-  margin: 20px 90px 0 0;
+  float: left;
+  max-height: 200px;
+  max-width: 320px;
   border-radius: 3px;
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.7);
+}
+
+.bottom-show-view {
+  margin: 30px 35px 20px 20px;
 }
 
 .go-back {
@@ -658,16 +655,27 @@ ul.listings-list {
   }
 }
 
+.website {
+  margin-right: 35px;
+}
+
+.divider {
+  width: 95%;
+  margin: 25px 0;
+  height: 1px;
+  background-color: #eee;
+}
+
 .moreinfo {
-  float: left;
+  float: right;
   font-size: 1.5em;
   font-weight: 700;
   background-color: #444;
   color: #eee;
   width: 220px;
   height: 40px;
-  margin-top: 60px;
-  margin-left: 100px;
+  // margin-top: 60px;
+  // margin-left: 100px;
   a {
     margin-top: 6px;
     margin-left: 10px;
@@ -764,11 +772,10 @@ ul.listings-list {
 
 .nyc {
   float: right;
-}
-.nyc a {
-  color: #008cff;
-}
-
-.nyc a:hover {
-  color: #0072a3
+  a {
+    color: #008cff;
+  }
+  a:hover {
+   color: #0072a3
+ }
 }

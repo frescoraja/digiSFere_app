@@ -12,7 +12,6 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 		this._map = options.map;
 		this.listenTo(this.collection, 'add', this.addListing);
 		this.listenTo(this.collection, 'remove', this.removeListing);
-		this.listenTo(this.collection, 'sync', this.render);
 		this.collection.each(this.addListing.bind(this));
 	},
 

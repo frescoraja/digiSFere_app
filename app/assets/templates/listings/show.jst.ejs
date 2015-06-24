@@ -1,12 +1,17 @@
 <div class="listing-show">
   <div class="go-back"><span class="backarrow"><</span>
-    <a class="back-link" href="#">Go Back</a>
+    <a class="back-link" href="/">Go Back</a>
   </div>
   <section class="listing-show-info">
     <%= LTYPES[listing.escape('category')] %>
     <div class="divider"></div>
     <p class="listing-title">
-      <%= listing.escape('title') %>
+      <h6>
+        <%= listing.escape('title') %>
+        <span class="pull-right website">
+          http://<%= listing.escape('website') %>
+        </span>
+      </h6>
     </p>
     <div class="divider"></div>
     <p class="section-title">
@@ -22,16 +27,19 @@
       <h4>
         <strong>DETAILS</strong>
       </h4>
+    </p>
     <p class="section-content">
       <%= listing.escape('about') %>
     </p>
     <div class="divider"></div>
-    <div class="moreinfo">
-      <a class="web-url"
-         href="http://<%= listing.get('website')%>">More Information</a>
-      <span class="go-to">></span>
+    <div class="bottom-show-view clearfix">
+      <div class="moreinfo">
+        <a class="web-url"
+           href="http://<%= listing.get('website')%>">More Information</a>
+        <span class="go-to">></span>
+      </div>
+      <img class="listing-img" src="<%= listing.escape('img_url') %>" />
     </div>
-    <img class="listing-img" src="<%= listing.escape('img_url') %>" />
   </section>
 </div>
 <div class="maps-views">
