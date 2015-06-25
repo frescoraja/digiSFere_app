@@ -17,9 +17,6 @@ DigiSFere.Views.Main = Backbone.CompositeView.extend({
   },
 
   addListingsView: function () {
-    this.mapView = this.mapView || new DigiSFere.Views.Map({
-      collection: this.collection
-    });
     this.listingsIndex = new DigiSFere.Views.ListingsIndex({
       collection: this.collection,
       map: this.mapView

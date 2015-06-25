@@ -4,7 +4,6 @@ DigiSFere.Views.Map = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.location = 'San Francisco, CA';
     this._colors = ['#eeeeee',
                     '#5297ff',
                     '#e74848',

@@ -45,16 +45,18 @@ class Api::ListingsController < ApplicationController
 	end
 
 	def find_queried_listings(binds)
-		listings = Arel::Table.new(:listings)
-		if binds[:query].length > 0
-			qry = "%#{binds[:query]}%"
-			results = Listing.where(listings[:title].matches(qry)
-											 .or(listings[:about].matches(qry)
-											 .or(listings[:website].matches(qry))))
-											 .where.not(category: binds[:category])
+		results = Listing.where.not(category: binds[:category])
 
-		else
-			results = Listing.where.not(category: binds[:category])
+		if binds[:query].length > 0
+			search_terms = binds[:query].split
+			search_terms.each do |qry|
+				term = "%#{qry}%"
+				listings = Arel::Table.new(:listings)
+
+				results = results.merge(results.where(listings[:title].matches(term)
+							 .or(listings[:about].matches(term)
+							 .or(listings[:website].matches(term))))).uniq
+			end
 		end
 
 		if binds[:lng_min].to_f > binds[:lng_max].to_f
@@ -69,6 +71,8 @@ class Api::ListingsController < ApplicationController
 					AND listings.longitude BETWEEN :lng_min AND :lng_max
 			SQL
 		end
+
+
 	end
 
 	def listing_params
