@@ -55,7 +55,7 @@ class Api::ListingsController < ApplicationController
 
 				results = results.merge(results.where(listings[:title].matches(term)
 							 .or(listings[:about].matches(term)
-							 .or(listings[:website].matches(term))))).uniq
+							 .or(listings[:website].matches(term)))))
 			end
 		end
 
