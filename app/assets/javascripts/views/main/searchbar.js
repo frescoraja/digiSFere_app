@@ -37,6 +37,7 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
   },
 
   triggerSearch: function (event) {
+    debugger
     event.preventDefault();
     var searchParams = $('.banner-input-field').val();
     this.collection.filterData.query = searchParams;

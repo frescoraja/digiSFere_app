@@ -14,8 +14,8 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
 
 	filter: function () {
 		this.fetch({
-			data: { filter_data: this.filterData }
-		});
+			data: { filter_data: this.filterData },
+    });
 	},
 
   getOrFetch: function (id) {

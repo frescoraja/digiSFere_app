@@ -1,6 +1,6 @@
 <div class="listing-show">
   <div class="go-back"><span class="backarrow"><</span>
-    <a class="back-link" href="javascript:void(0)">Go Back</a>
+    <a class="back-link" href="#">Go Back</a>
   </div>
   <section class="listing-show-info">
     <%= LTYPES[listing.escape('category')] %>
@@ -16,7 +16,7 @@
     <div class="divider"></div>
     <p class="section-title">
       <h4>
-        <strong>OVERVIEW</strong>
+        <strong>LOCATION</strong>
       </h4>
     </p>
     <p class="section-content">
@@ -35,7 +35,7 @@
     <div class="bottom-show-view clearfix">
       <div class="moreinfo">
         <a class="web-url"
-           href="http://<%= listing.get('website')%>">More Information</a>
+           href="http://<%= listing.get('website')%>">Visit Website</a>
         <span class="go-to">></span>
       </div>
       <img class="listing-img" src="<%= listing.escape('img_url') %>" />

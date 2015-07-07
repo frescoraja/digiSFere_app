@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require jquery.geocomplete
 //= require upload_img_widget
 //= require underscore
+//= require markerclusterer
 //= require serializejson
 //= require backbone
 //= require digisfere

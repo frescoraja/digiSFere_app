@@ -4,15 +4,17 @@ DigiSFere.Views.ListingShow = Backbone.View.extend({
   className: 'listing-show-view',
 
   events: {
-    'click .go-back': 'toMain'
+    'click .moreinfo': 'openWindow'
   },
 
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
   },
 
-  toMain: function () {
-    Backbone.history.navigate('', { trigger: true });
+  openWindow: function (event) {
+    event.preventDefault();
+    url = $('.web-url').attr('href');
+    window.open(url);
   },
 
   render: function () {

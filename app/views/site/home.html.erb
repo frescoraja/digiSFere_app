@@ -39,12 +39,7 @@
       </div>
       <input class="sign-in-btn" type="submit" value="Sign In">
     </form>
-    <form action="<%= session_url %>" method="post">
-      <%= csrf_token %>
-      <input type="hidden" name="user[username]" value="Guest">
-    	<input type="hidden" name="user[password]" value="password">
-      <input type="submit" value="Guest Sign In">
-    </form>
+    <input type="submit" id="guestsubmit" value="Guest Sign In">
     <p class="toggle-form">
       Want to sign up?
     </p>
@@ -68,7 +63,7 @@
                id="password"
                placeholder="password">
 
-      <input class="new-user-btn" type="submit" value="Create User">
+      <input type="submit" value="Create User">
     </form>
     <div class="error">
     </div>

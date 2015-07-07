@@ -22,18 +22,18 @@ DigiSFere.Views.Map = Backbone.View.extend({
     if (this._markers[listing.id]) { return; }
     var view = this;
     var mColor = this._colors[listing.get('category')];
+
     var marker = new google.maps.Marker({
       position: { lat: listing.get('latitude'), lng: listing.get('longitude') },
       map: this._map,
-      content: listing.get('title'),
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
-        scale: 7,
-        strokeColor: mColor,
+        scale: 10,
+        strokeColor: 'black',
         fillColor: mColor,
-        strokeWeight: 10,
-        strokeOpacity: 0.5,
-        fillOpacity: 0.7
+        strokeWeight: 0.4,
+        strokeOpacity: 0.3,
+        fillOpacity: 0.5
       }
     });
 
@@ -41,7 +41,6 @@ DigiSFere.Views.Map = Backbone.View.extend({
       view.infoWindow && view.infoWindow.close();
       view.showMarkerInfo(event, marker, listing);
     });
-
     this._markers[listing.id] = marker;
   },
 
@@ -92,6 +91,8 @@ DigiSFere.Views.Map = Backbone.View.extend({
         mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
       }
     };
+
+
     this._map = new window.google.maps.Map(this.el, mapOptions);
     this._map.mapTypes.set('map_style', this._styledMap);
     this._map.setMapTypeId('map_style');
