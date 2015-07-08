@@ -1,8 +1,4 @@
 DigiSFere.Views.Map = Backbone.View.extend({
-  attributes: {
-    id: 'map-canvas'
-  },
-
   initialize: function () {
     this._colors = ['#eeeeee',
                     '#5297ff',
@@ -12,17 +8,16 @@ DigiSFere.Views.Map = Backbone.View.extend({
                     '#ffe663'];
     this._markers = {};
     this._genStyles();
-    this.createMap();
   },
 
-  template: JST['map/map'],
+  id: 'map-canvas',
 
+  template: JST['map/map'],
 
   addMarker: function (listing) {
     if (this._markers[listing.id]) { return; }
     var view = this;
     var mColor = this._colors[listing.get('category')];
-
     var marker = new google.maps.Marker({
       position: { lat: listing.get('latitude'), lng: listing.get('longitude') },
       map: this._map,
@@ -41,6 +36,7 @@ DigiSFere.Views.Map = Backbone.View.extend({
       view.infoWindow && view.infoWindow.close();
       view.showMarkerInfo(event, marker, listing);
     });
+
     this._markers[listing.id] = marker;
   },
 
@@ -91,17 +87,17 @@ DigiSFere.Views.Map = Backbone.View.extend({
         mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
       }
     };
-
-
     this._map = new window.google.maps.Map(this.el, mapOptions);
     this._map.mapTypes.set('map_style', this._styledMap);
     this._map.setMapTypeId('map_style');
     this.attachMapListeners();
+    this.collection.forEach(function (listing) {
+      this.addMarker(listing);
+    }.bind(this));
   },
 
   render: function () {
     var content= this.template();
-    this.createMap();
     this.$el.html(content);
     return this;
   },

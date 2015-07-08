@@ -1,7 +1,8 @@
 DigiSFere.Routers.Router = Backbone.Router.extend({
 	initialize: function (options) {
 		this.$rootEl = options.$rootEl;
-		this.listings = options.listings;
+		this.searchbar = options.searchbar;
+		this.listings = this.searchbar.collection;
 	},
 
 	routes: {
@@ -10,7 +11,6 @@ DigiSFere.Routers.Router = Backbone.Router.extend({
 	},
 
 	main: function () {
-		this.listings.filter();
 		var mainView = new DigiSFere.Views.Main({
 			collection: this.listings
 		});

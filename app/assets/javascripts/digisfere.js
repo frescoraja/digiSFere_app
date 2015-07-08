@@ -6,17 +6,18 @@ window.DigiSFere = {
   initialize: function() {
     var $rootEl = $('#content');
     var listings = new DigiSFere.Collections.Listings();
-
-    new DigiSFere.Routers.Router({
-      $rootEl: $rootEl,
-      listings: listings
-    });
-
-    var searchBarView = new DigiSFere.Views.SearchBar({
+    var searchbar = new DigiSFere.Views.SearchBar({
       collection: listings
     });
 
-    $('#searchbar').html(searchBarView.render().$el);
+    $('#searchbar').html(searchbar.render().$el);
+
+    new DigiSFere.Routers.Router({
+      $rootEl: $rootEl,
+      listings: listings,
+      searchbar: searchbar
+    });
+
 
     Backbone.history.start();
   }
