@@ -6,12 +6,16 @@
     <%= LTYPES[listing.escape('category')] %>
     <div class="divider"></div>
     <p class="listing-title">
-      <h6>
-        <%= listing.escape('title') %>
+      <h5><strong><%= listing.escape('title') %></strong>
         <span class="pull-right website">
-          http://<%= listing.escape('website') %>
+          <a href="http://<%= listing.escape('website') %>">
+          <% var idx = listing.escape('website').indexOf('.com') %>
+          <% if (idx != -1) { %>
+          <% var urlstring = listing.escape('website').substr(0, idx + 4); %>
+          <% } %>
+          <%= urlstring %></a>
         </span>
-      </h6>
+      </h5>
     </p>
     <div class="divider"></div>
     <p class="section-title">

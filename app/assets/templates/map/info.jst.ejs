@@ -1,12 +1,7 @@
 <a class="listing-info-link" href="#/listings/<%= listing.get('id') %>">
-
-
   <div class="listing-info">
     <img class="listing-info-img" src="<%= listing.get('img_url') %>">
     <p><strong><%= listing.get('title') %></strong></p>
-    <p><%= listing.get('about') %></p>
+    <p><%= listing.get('about').substr(0,120) + '...' %></p>
   </div>
 </a>
-
-<hr>
-<a href="http://<%= listing.get('website') %>">Website</a>
