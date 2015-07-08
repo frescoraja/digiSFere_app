@@ -39,18 +39,18 @@ a, a:hover, a:visited, a:active, a:focus {
 }
 
 .errors {
-  font-family: 'Roboto', serif;
-  font-size: 22px;
+  font-family: 'Josefin Sans', serif;
+  font-size: 20px;
   position: absolute;
-  top: 0;
+  top: 10%;
   padding: 0;
   margin: 0;
-  width: 20%;
-  left: 40%;
+  width: 30%;
+  left: 35%;
   background-color: rgba(255, 255, 255, 0.42);
-  color: rgb(255, 46, 0);
+  color: rgb(0, 0, 0);
   text-align: center;
-  text-shadow: rgba(255, 255, 255, 0.34);
+  text-shadow: 0px, 0px, 5px, rgba(1, 0, 0, 0.84);
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   z-index: 1050;
@@ -60,7 +60,7 @@ a, a:hover, a:visited, a:active, a:focus {
 }
 
 .successes {
-  font-family: 'Roboto', serif;
+  font-family: 'Josefin Sans', serif;
   font-size: 22px;
   position: absolute;
 }
@@ -73,7 +73,7 @@ a, a:hover, a:visited, a:active, a:focus {
 
 .new-session-form,
 .new-user-form {
-  font-family: 'Roboto', serif;
+  font-family: 'Josefin Sans', serif;
   text-align: center;
   color: white;
   position: absolute;
@@ -86,7 +86,7 @@ a, a:hover, a:visited, a:active, a:focus {
 }
 
 .errors {
-  font-family: 'Roboto', serif;
+  font-family: 'Josefin Sans', serif;
   position: absolute;
   top:0;
   transition: content 200ms ease-in-out;
@@ -102,7 +102,7 @@ a, a:hover, a:visited, a:active, a:focus {
   top: 0;
   right: 0;
   font-size: 20px;
-  font-family: 'Roboto', serif;
+  font-family: 'Josefin Sans', serif;
 }
 
 .enter-site {
@@ -164,7 +164,7 @@ a, a:hover, a:visited, a:active, a:focus {
 
 .new-user-form input,
 .new-session-form input {
-  font-family: 'Roboto', serif;
+  font-family: 'Josefin Sans', serif;
   color: white;
   background-color: rgba(0,0,0,0);
   text-align: center;
@@ -217,6 +217,7 @@ a, a:hover, a:visited, a:active, a:focus {
   width: 100%;
   background-color: #222;
   color: #eee;
+  z-index: 10;
 }
 
 a.new, a.new:hover,
@@ -561,6 +562,7 @@ ul.listings-list {
 
 #searchbar {
   width: 100%;
+  min-width: 1050px;
   height: 200px;
   font-family: 'Josefin Sans', serif;
   text-shadow: 0 1px 1px #000;
@@ -785,22 +787,52 @@ ul.listings-list {
  }
 }
 
+.vdivider {
+  position: absolute;
+  left: 50px;
+  top: 0px;
+  height: 100%;
+  width: 1px;
+  background-color: #888;
+  transition: left 700ms ease-in-out;
+}
+
 .sign-out {
-  text-align: center;
-  border: 3px solid white;
-  height: 27px;
-  padding-top: 4px;
-  font-size: 10px;
-  position: relative;
-  bottom: -30px;
-  right: -44px;
-  border-radius: 0%;
+  min-width: 83px;
+  position: absolute;
+  left: 91.6667%;
+  padding-left: 5px;
+  margin-top: 12px;
+  margin-left: -50px;
+  padding-right: 4px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  font-family: 'Josefin Sans', serif;
+  background-color: #222;
+  transition: margin-left 700ms ease-in-out;
   a {
-    color: white;
+    font-size: 12px;
+    color: #888;
+  }
+  span {
+    margin-left: 3px;
+    font-size: 20px;
+    padding: 3px 2px;
   }
 }
 
 .sign-out:hover {
   cursor: pointer;
+  color: #eee;
+  margin-left: 0px;
   box-shadow: 0 0 5px 1px rgba(81, 203, 238, 1);
+  transition: margin-left 250ms ease-in-out;
+  a {
+    color: #eee;
+  }
+  .vdivider {
+    left: 0px;
+    background-color: #eee;
+    transition: left 250ms ease-in-out;
+  }
 }

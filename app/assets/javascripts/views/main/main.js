@@ -9,8 +9,6 @@ DigiSFere.Views.Main = Backbone.CompositeView.extend({
     this.addFilterBarView();
   },
 
-
-
   addFilterBarView: function () {
     this.filterBarView = new DigiSFere.Views.FilterBar({
       collection: this.collection

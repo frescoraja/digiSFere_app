@@ -37,7 +37,7 @@
                name="user[password]"
                id="login-password">
       </div>
-      <input class="sign-in-btn" type="submit" value="Sign In">
+      <input id="sign-in-btn" type="submit" value="Sign In">
     </form>
     <input type="submit" id="guestsubmit" value="Guest Sign In">
     <p class="toggle-form">
@@ -55,16 +55,19 @@
       <%= csrf_token %>
         <input type="text"
                name="user[username]"
-               id="username"
+               id="new-username"
                placeholder="username">
 
         <input type="password"
                name="user[password]"
-               id="password"
+               id="new-password"
                placeholder="password">
 
       <input type="submit" value="Create User">
     </form>
+    <p class="toggle-form">
+      Already a User?
+    </p>
     <div class="error">
     </div>
   </div>
