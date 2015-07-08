@@ -19,6 +19,18 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
     'click .new-listing-tile': 'showNewListingModal'
   },
 
+  checkFilters: function () {
+    var filters = this.collection.filterData.category;
+    var view = this;
+    filters.forEach(function (categoryId) {
+      _.forEach(view.$('.category'), function (tile) {
+         if (categoryId === $(tile).data('id')) {
+           $(tile).addClass('clicked');
+         }
+      });
+    });
+  },
+
   count: function () {
     this._counts = this.collection.countBy('category');
     $('.num-jobs').text(this._counts[1] || 0);
@@ -56,6 +68,7 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
       listings: this.collection
     });
     this.$el.html(content);
+    this.checkFilters();
     this.count();
     return this;
   }
