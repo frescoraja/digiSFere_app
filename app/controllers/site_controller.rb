@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  before_action :require_user!, only: [:root]
+  before_action :require_user!, only: [:main]
   def main
     render :main
   end
