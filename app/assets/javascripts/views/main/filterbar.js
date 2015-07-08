@@ -1,6 +1,8 @@
 DigiSFere.Views.FilterBar = Backbone.View.extend({
   className: 'filterbar-view',
 
+  tagName: 'ul',
+
   attributes: {
     id: 'filterbar'
   },
@@ -9,6 +11,7 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.collection, 'sync', this.count);
+    this.$el.sortable();
   },
 
   events: {

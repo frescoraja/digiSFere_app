@@ -12,6 +12,10 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
 		};
 	},
 
+  comparator: function (collection) {
+    return(collection.get('updated_at'));
+  },
+
 	filter: function () {
 		this.fetch({
 			data: { filter_data: this.filterData },

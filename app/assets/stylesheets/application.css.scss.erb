@@ -211,12 +211,20 @@ a, a:hover, a:visited, a:active, a:focus {
   background-size: cover;
 }
 
-.filterbar {
+#filterbar {
   position: relative;
   height: 60px;
   width: 100%;
   background-color: #222;
   color: #eee;
+  list-style-type: none;
+  list-style: none;
+  -webkit-padding-start: none;
+}
+.filterbar ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
 }
 
 a.new, a.new:hover,
@@ -232,7 +240,7 @@ a.new:focus {
   border-bottom: 1px solid #222;
 }
 
-.filterbar-view > div:not(:last-child) {
+.filterbar-view > li:not(:last-child) {
   border-right: 1px solid #888;
 }
 
@@ -396,6 +404,11 @@ ul.listings-list {
   float: left;
   display: block;
   clear: right;
+}
+
+.new-item {
+  position: absolute;
+  right: 0px;
 }
 
 .JOB {

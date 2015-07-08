@@ -21,6 +21,15 @@ DigiSFere.Views.ListingItem = Backbone.View.extend({
     this.listenTo(this.model, 'sync', this.render);
   },
 
+  checkNewListings: function () {
+    var time = parseInt(Date.parse(this.model.get('updated_at')));
+    var now = parseInt(new Date().getTime());
+    if ((now - time) < 86400000) {
+      $new = $('<span>').text("New!").css('color', 'red').addClass('new-item');
+      this.$el.find('.category-title').append($new);
+    }
+  },
+
   gotoShow: function (event) {
     event.preventDefault();
     var listingId = $(event.currentTarget).data('id');
@@ -33,6 +42,7 @@ DigiSFere.Views.ListingItem = Backbone.View.extend({
       title: this.listTitle
     });
     this.$el.html(content);
+    this.checkNewListings();
     return this;
   }
 });
