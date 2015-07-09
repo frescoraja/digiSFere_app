@@ -18,6 +18,12 @@ window.DigiSFere = {
       searchbar: searchbar
     });
 
+    listings.fetch({
+      success: function () {
+        DigiSFere.TOTAL = listings.size();
+      }
+    });
+    
     Backbone.history.start();
   }
 };

@@ -355,8 +355,11 @@ a.new:focus {
 }
 
 .listings-header {
+  position: relative;
+  padding-top: 10px;
   height: 32px;
-  width: 100%;
+  padding-left: 40px;
+  font-family: 'Josefin Sans', serif;
 }
 
 ul.listings-list {
@@ -454,10 +457,6 @@ ul.listings-list {
   left: 0;
   display: inline-block;
   overflow-y: auto;
-}
-
-.listings-header {
-  position: fixed;
 }
 
 .map {
@@ -679,8 +678,13 @@ ul.listings-list {
   }
 }
 
+.go-back:hover {
+  cursor: pointer;
+}
+
 .website {
-  margin-right: 35px;
+  margin-top: 16px;
+  margin-right: 42px;
 }
 
 .divider {
@@ -743,9 +747,8 @@ ul.listings-list {
   margin: 20px 90px 20px 40px;
 }
 
-.listing-title {
-  font-size: 2em;
-  margin: 30px 0;
+.listing-show-title {
+  display: inline;
 }
 
 .foot-el {

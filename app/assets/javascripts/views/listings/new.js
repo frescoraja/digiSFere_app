@@ -25,6 +25,7 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
     newListing.save({}, {
       success: function () {
         listings.add(newListing);
+        DigiSFere.TOTAL++;
         this.remove();
       }.bind(this),
       error: function (model, response) {
