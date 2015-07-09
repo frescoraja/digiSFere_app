@@ -37,6 +37,31 @@ Backbone.CompositeView = Backbone.View.extend({
     });
   },
 
+  attachSubviewsSorted: function () {
+    // I decided I didn't want a function that renders ALL the
+    // subviews together. Instead, I think:
+    //
+    // * The user of CompositeView should explicitly render the
+    //   subview themself when they build the subview object.
+    // * The subview should listenTo relevant events and re-render
+    //   itself.
+    //
+    // All that is necessary is "attaching" the subview `$el`s to the
+    // relevant points in the parent CompositeView.
+
+    var view = this;
+    this.subviews().each(function (selectorSubviews, selector) {
+      view.$(selector).empty();
+      DigiSFere._SORTBY.forEach(function (cat) {
+        selectorSubviews.each(function (subview) {
+          if (subview.model.get('category') === cat) {
+            view.attachSubview(selector, subview);
+          }
+        });
+      });
+    });
+  },
+
   eachSubview: function(callback) {
     this.subviews().each(function (selectorSubviews, selector) {
       selectorSubviews.each(function (subview) {

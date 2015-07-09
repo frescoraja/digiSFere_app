@@ -10,6 +10,8 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 
 	initialize: function (options) {
 		this._map = options.map;
+		this.itemsArray = [];
+		this.listenTo(this.collection, 'sort', this.render);
 		this.listenTo(this.collection, 'add', this.addListing);
 		this.listenTo(this.collection, 'remove', this.removeListing);
 		this.collection.each(this.addListing.bind(this));
@@ -19,10 +21,13 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 		var listingItemView = new DigiSFere.Views.ListingItem({
 			model: listing
 		});
+		this.itemsArray.push(listingItemView);
 		this.addSubview('.listings-list', listingItemView);
 	},
 
 	removeListing: function (listing) {
+		var idx = this.itemsArray.indexOf(listing);
+		this.itemsArray.splice(idx, 1);
 		this.removeModelSubview('.listings-list', listing);
 	},
 
@@ -34,7 +39,7 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 	render: function () {
 		var content = this.template();
 		this.$el.html(content);
-		this.attachSubviews();
+		this.attachSubviewsSorted();
 		return this;
 	}
 });

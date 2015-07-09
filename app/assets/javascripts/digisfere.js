@@ -18,7 +18,6 @@ window.DigiSFere = {
       searchbar: searchbar
     });
 
-
     Backbone.history.start();
   }
 };
