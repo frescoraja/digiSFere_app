@@ -10,7 +10,7 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
   },
 
   events: {
-    'click .new-listing-submit-button': 'addNewListing',
+    'click .submit': 'addNewListing',
     'click .img-upload': 'newListingImg',
     'click .new-listing-backdrop': 'dismiss',
     'change #category': 'changeButton',
@@ -45,6 +45,7 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
     var cValue = this._colors[$('#category').val()];
     $submitBtn = $('.new-listing-submit-button');
     $submitBtn.removeClass('disabled');
+    $submitBtn.addClass('submit');
     $submitBtn.css('color', '#444');
     $submitBtn.css('background-color', cValue);
     $submitBtn.find('span').css('color', cValue);
