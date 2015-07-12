@@ -23,11 +23,11 @@ DigiSFere.Views.Map = Backbone.View.extend({
       map: this._map,
       icon: {
         path: google.maps.SymbolPath.CIRCLE,
-        scale: 6,
-        strokeColor: mColor,
+        scale: 7,
+        strokeColor: 'black',
         fillColor: mColor,
-        strokeWeight: 6,
-        strokeOpacity: 0.4,
+        strokeWeight: .5,
+        strokeOpacity: .8,
         fillOpacity: 0.8,
       }
     });
