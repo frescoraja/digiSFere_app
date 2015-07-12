@@ -34,7 +34,7 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 
 	updateCounts: function () {
 		var collection = this.collection,
-				count, total;
+				total, count;
 		$.ajax('api/listings',
 					 {success: function (res) {
 						 total = res;
