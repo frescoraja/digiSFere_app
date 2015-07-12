@@ -5,7 +5,7 @@
 [link]: http://www.digisfere.io
 
 ## Minimum Viable Product
-digiSFere is a 
+digiSFere is a web platform for Bay Area software developers to discover and share local opportunities and events.
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
