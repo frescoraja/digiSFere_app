@@ -10,7 +10,7 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
   },
 
   events: {
-    'click .new-listing-submit': 'addNewListing',
+    'click .new-listing-submit-button': 'addNewListing',
     'click .img-upload': 'newListingImg',
     'click .new-listing-backdrop': 'dismiss',
     'change #category': 'changeButton',
@@ -43,10 +43,11 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
 
   changeButton: function () {
     var cValue = this._colors[$('#category').val()];
-    $('.new-listing-submit-container').removeClass('disabled');
-    $('.new-listing-submit-container').css('background-color', cValue);
-    $('.new-listing-submit-container').find('a').css('color', '#444');
-    $('.new-listing-submit-container').find('span').css('color', cValue);
+    $submitBtn = $('.new-listing-submit-button');
+    $submitBtn.removeClass('disabled');
+    $submitBtn.css('color', '#444');
+    $submitBtn.css('background-color', cValue);
+    $submitBtn.find('span').css('color', cValue);
   },
 
   dismiss: function () {
