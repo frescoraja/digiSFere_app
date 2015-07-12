@@ -91,9 +91,6 @@ DigiSFere.Views.Map = Backbone.View.extend({
     this._map.mapTypes.set('map_style', this._styledMap);
     this._map.setMapTypeId('map_style');
     this.attachMapListeners();
-    this.collection.forEach(function (listing) {
-      this.addMarker(listing);
-    }.bind(this));
   },
 
   render: function () {
