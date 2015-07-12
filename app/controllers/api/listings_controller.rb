@@ -8,6 +8,10 @@ class Api::ListingsController < ApplicationController
 		end
 	end
 
+	def index
+		render json: Listing.count
+	end
+
 	def search
     @listings = filter_listings(filter_options).order('category')
 		render json: @listings

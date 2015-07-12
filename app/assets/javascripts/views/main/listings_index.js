@@ -33,9 +33,15 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 	},
 
 	updateCounts: function () {
-		this.count = this.collection.size();
-		$('.total').text(DigiSFere.TOTAL);
-		$('.idxcount').text(this.count);
+		var collection = this.collection,
+				count, total;
+		$.ajax('api/listings',
+					 {success: function (res) {
+						 total = res;
+						 count = collection.size();
+						 $('.total').text(total);
+						 $('.idxcount').text(count);
+					 }});
 	},
 
 	updateHeader: function () {
@@ -49,13 +55,13 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 		});
 		headingStrings = headingStrings.join(', ');
 		$('.list-item-header-content').append(headingStrings);
+		this.updateCounts();
 	},
 
 	render: function () {
 		var content = this.template();
 		this.$el.html(content);
 		this.attachSubviewsSorted();
-		this.updateCounts();
 		this.updateHeader();
 		return this;
 	}

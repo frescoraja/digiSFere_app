@@ -35,7 +35,12 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
   	return listing;
   },
 
-  totalCount: function () {
-    this.size();
+  total: function () {
+    var collection = this;
+    $.ajax('api/listings',
+           {success: function (res) {
+             collection._total = res;
+           }});
+    return this._total;
   }
 });
