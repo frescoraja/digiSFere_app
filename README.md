@@ -2,9 +2,14 @@
 
 [Live](http://www.digisfere.io)
 
-<img src="https://www.dropbox.com/s/bok9hz4qy8nlbpi/landing1sm.png?raw=1" width="45%">
-<img src="https://www.dropbox.com/s/bzfcl6y2mni4ud7/loginsm.png?raw=1" width="45%">
-<img src="https://www.dropbox.com/s/efexkpz5w4wnzh4/mainpage1.png?raw=1" width="33%">
+<img src="https://www.dropbox.com/s/bok9hz4qy8nlbpi/landing1sm.png?raw=1" width="33%">
+<img src="https://www.dropbox.com/s/bzfcl6y2mni4ud7/loginsm.png?raw=1" width="33%">
+<img src="https://www.dropbox.com/s/p03py5fukzj4ken/mainpage1sm.png?raw=1" width="33%">
+<img src="https://www.dropbox.com/s/9c6oa0r2ox9xeyw/mainpage2sm.png?raw=1" width="33%">
+<img src="https://www.dropbox.com/s/ky9crsyfhy1exb7/mainpage3sm.png?raw=1" width="33%">
+<img src="https://www.dropbox.com/s/07okg766pa17pfd/modalsm1.png?raw=1" width="33%">
+<img src="https://www.dropbox.com/s/akfcsxqlz6c590l/search1sm.png?raw=1" width="33%">
+<img src="https://www.dropbox.com/s/n2bh8qs5kigarp9/showsm1.png?raw=1" width="33%">
 
 ## Minimum Viable Product
 digiSFere is a web platform for Bay Area software developers to discover and share local opportunities and events.
