@@ -1,11 +1,10 @@
 # digiSFere
 
-[Live][link]
+[Live](http://www.digisfere.io)
 
-[link]: http://www.digisfere.io
-
-## Site Preview:
-<img src='http://1drv.ms/1eUjn9i'>
+<img src="https://www.dropbox.com/s/bok9hz4qy8nlbpi/landing1sm.png?raw=1" width="45%">
+<img src="https://www.dropbox.com/s/bzfcl6y2mni4ud7/loginsm.png?raw=1" width="45%">
+<img src="https://www.dropbox.com/s/efexkpz5w4wnzh4/mainpage1.png?raw=1" width="33%">
 
 ## Minimum Viable Product
 digiSFere is a web platform for Bay Area software developers to discover and share local opportunities and events.
