@@ -111,7 +111,7 @@ DigiSFere.Views.Map = Backbone.View.extend({
 
   toggleBounce: function (id) {
     var marker = this._markers[id];
-    if (marker.getAnimation() != null) {
+    if (marker.getAnimation()) {
       marker.setAnimation(null);
     } else {
       marker.setAnimation(google.maps.Animation.BOUNCE);

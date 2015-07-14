@@ -46,7 +46,7 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 
 	updateHeader: function () {
 		var categories = ['Jobs','Startups','Events','Workspaces','Companies'];
-		headingStrings = [];
+		var headingStrings = [];
 		var self = this;
 		categories.forEach(function (cat, idx) {
 			if (self.collection.filterData.category.indexOf(idx + 1) === -1) {
