@@ -31,16 +31,37 @@
 </html>
 
 <script>
+  var idleTime = 0;
   $(document).ready(function () {
-    DigiSFere.initialize()
+    DigiSFere.initialize();
 
     $('#sign-out').click(function (e) {
+      signOut();
+    });
+
+    var idleInterval = setInterval(timerCount, 60000);
+
+    $(this).mousemove(function (e) {
+      idleTime = 0;
+    });
+
+    $(this).keypress(function (e) {
+      idleTime = 0;
+    });
+
+    function timerCount () {
+      if (++idleTime > 9) {
+        signOut();
+        clearInterval(idleInterval);
+      }
+    }
+
+    function signOut () {
       $.ajax({
       url: '/session',
       type: 'DELETE'
       });
       location.href = '/';
-    });
-
+    }
   });
 </script>
