@@ -5,10 +5,12 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 
 	events: {
 		'mouseenter .list-item': 'toggleBounce',
-		'mouseleave .list-item': 'toggleBounce'
+		'mouseleave .list-item': 'toggleBounce',
+		// 'click .change-page': 'updatePage'
 	},
 
 	initialize: function (options) {
+		// this.page = this.collection.filterData.page;
 		this._map = options.map;
 		this.listenTo(this.collection, 'sort sync', this.render);
 		this.listenTo(this.collection, 'add', this.addListing);
@@ -34,13 +36,13 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 
 	updateCounts: function () {
 		var collection = this.collection,
-				total, count;
+				count, total;
 		$.ajax('api/listings',
 					 {success: function (res) {
 						 total = res;
 						 count = collection.size();
-						 $('.total').text(total);
 						 $('.idxcount').text(count);
+						 $('.total').text(total);
 					 }});
 	},
 
@@ -58,10 +60,22 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 		this.updateCounts();
 	},
 
+	// updatePage: function () {
+	// 	var totalPgs = Math.ceil(this.total / 10);
+	// 	for (var i = 1; i <= totalPgs; i++) {
+	// 		var idStr = String("pg" + i);
+	// 		$pgLink = $('<a>').attr('id', idStr).text(i);
+	// 		if (this.page === i) {
+	// 			$pgLink.addClass('current-page');
+	// 		}
+	// 		$('.change-page').append($pgLink);
+	// 	}
+	// },
+
 	render: function () {
 		var content = this.template();
 		this.$el.html(content);
-		this.attachSubviewsSorted();
+		this.attachSubviewsSorted(this.page);
 		this.updateHeader();
 		return this;
 	}

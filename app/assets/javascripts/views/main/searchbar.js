@@ -4,36 +4,32 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
   className: 'searchbar-view col-xs-10 col-xs-offset-1',
 
   events: {
-    'click .banner-input-placeholder': 'hidePlaceholder',
+    'click .banner-input-placeholder': 'focusSearch',
+    'focus .banner-input-field': 'hidePlaceholder',
     'blur .banner-input-field': 'revealPlaceholder',
     'submit .banner-input': 'triggerSearch',
-    'click .banner-search-button': 'checkSearchParams',
-    'keyup .banner-input-field': 'triggerSearch'
+    'click .banner-search-button': 'checkSearch'
+  },
+
+  checkSearch: function (event) {
+    if ($('.banner-input-field').val() === '') {
+      $('.banner-input-field').submit();
+      $('.banner-input-field').blur();
+    }
   },
 
   hidePlaceholder: function (event) {
-    $(event.currentTarget).addClass('invisible');
+    $('.banner-input-placeholder').css('display','none');
+  },
+
+  focusSearch: function (event) {
     $('.banner-input-field').focus();
   },
 
-  checkSearchParams: function (event) {
-    event.preventDefault();
+  revealPlaceholder: function (event) {
     if ($('.banner-input-field').val() === '') {
-      return;
-    } else {
-      $('.banner-input').submit();
+      $('.banner-input-placeholder').css('display','block');
     }
-  },
-
-  revealPlaceholder: function () {
-    if ($('.banner-input-field').val() === '') {
-      $('.banner-input-placeholder').removeClass('invisible');
-    }
-  },
-
-  render: function () {
-    this.$el.html(this.template());
-    return this;
   },
 
   triggerSearch: function (event) {
@@ -41,11 +37,13 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
     var searchParams = $('.banner-input-field').val();
     this.collection.filterData.query = searchParams;
     this.collection.filter();
-    if (event.type === 'submit') {
-      $('.banner-input-field').blur();
-      if ($('.content-view').length === 0) {
-        Backbone.history.navigate('', { trigger: true });
-      }
+    if ($('.content-view').length === 0) {
+      Backbone.history.navigate('', { trigger: true });
     }
+  },
+
+  render: function () {
+    this.$el.html(this.template());
+    return this;
   }
 });
