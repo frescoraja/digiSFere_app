@@ -43,6 +43,10 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 						 count = collection.size();
 						 $('.idxcount').text(count);
 						 $('.total').text(total);
+						 if (count === 0) {
+							 $('.list-item-header-content')
+							 	.text('No results found..');
+						 }
 					 }});
 	},
 
