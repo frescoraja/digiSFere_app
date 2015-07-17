@@ -103,7 +103,7 @@ DigiSFere.Views.Map = Backbone.View.extend({
   },
 
   attachMapListeners: function () {
-    this.listenTo(this._map, 'click', this.closeInfoWindow.bind(this));
+    google.maps.event.addListener(this._map, 'click', this.closeInfoWindow.bind(this));
     this.listenTo(this.collection, 'add', this.addMarker);
     this.listenTo(this.collection, 'remove', this.removeMarker);
     google.maps.event.addListener(this._map, 'idle', this.setBounds.bind(this));

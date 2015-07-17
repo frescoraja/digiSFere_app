@@ -6,7 +6,7 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 	events: {
 		'mouseenter .list-item': 'toggleBounce',
 		'mouseleave .list-item': 'toggleBounce',
-		// 'click .change-page': 'updatePage'
+		// 'click .change-page': 'updatePage' // Paginated results
 	},
 
 	initialize: function (options) {
