@@ -37,6 +37,7 @@
 
     $('#sign-out').click(function (e) {
       signOut();
+      location.href = '/';
     });
 
     var idleInterval = setInterval(timerCount, 60000);
@@ -57,11 +58,11 @@
     }
 
     function signOut () {
-      $.ajax({
+    $.ajax({
+      type: 'post',
       url: '/session',
-      type: 'DELETE'
-      });
-      location.href = '/';
+      data: {'_method':'delete'}
+    });
     }
   });
 </script>

@@ -56,6 +56,7 @@
           width = $(window).width()-185;
       if (posX > 300 && posX < width || (posX > width && posY > 53)) {
         $('.visible').removeClass('visible');
+        $('.main').removeClass('moved-right');
         $('.errors').empty();
         $('input').empty();
       }
