@@ -13,12 +13,12 @@ class Api::ListingsController < ApplicationController
 	end
 
 	def search
-    @listings = filter_listings(filter_options).order('category')
+    @listings = filter_listings(filter_options).order("updated_at desc")
 		render json: @listings
   end
 
 	def show
-		@listing = Listing.find_by_id(params[:id])
+		@listing = Listing.find(params[:id])
 		render json: @listing
 	end
 
