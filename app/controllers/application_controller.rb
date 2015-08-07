@@ -7,24 +7,22 @@ class ApplicationController < ActionController::Base
 
   def current_user
     return nil unless session[:session_token]
-    @current_user = User.find_by_session_token(session[:session_token])
+    current_session = Session.find_by_session_token(session[:session_token])
+    @current_user = current_session.nil? ? nil : User.find(current_session.user_id)
   end
 
   def require_user!
-    unless current_user
-      flash.now[:errors] = ["Must be logged in!"]
-      redirect_to home_url
-    end
+    redirect_to home_url unless current_user
   end
 
   private
   def sign_in(user)
     @current_user = user
-    session[:session_token] = user.reset_session_token!
+    session[:session_token] = user.add_token!
   end
 
   def sign_out
-    current_user.try(:reset_session_token!)
+    current_user.try(:remove_token, session[:session_token])
     session[:session_token] = nil
   end
 end
