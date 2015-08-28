@@ -13,8 +13,8 @@
 
     $('#guestsubmit').click(function (event) {
       event.preventDefault();
-      $userInput = $('#login-username');
-      $pwInput = $('#login-password');
+      var $userInput = $('#login-username');
+      var $pwInput = $('#login-password');
       autoTyper("Guest", $userInput, function () {
         autoTyper("password", $pwInput, function () {
           $('#sign-in-btn').click();
@@ -54,6 +54,7 @@
       var posX = event.pageX,
           posY = event.pageY,
           width = $(window).width()-185;
+      // user clicks outside entry button, dismisses login sidebar, resets forms
       if (posX > 300 && posX < width || (posX > width && posY > 53)) {
         $('.visible').removeClass('visible');
         $('.main').removeClass('moved-right');
