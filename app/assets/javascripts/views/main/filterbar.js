@@ -14,6 +14,9 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
     var view = this;
     this.$el.sortable({
       items: '> li',
+      tolerance: 'pointer',
+      containment: 'parent',
+      cursor: 'move',
       stop: function (event, obj) {
         DigiSFere._SORTBY = [];
         _.forEach($('li.category'),(function (li) {
