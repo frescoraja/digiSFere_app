@@ -8,8 +8,12 @@ class Api::ListingsController < ApplicationController
 		end
 	end
 
-	def index
+	def count
 		render json: Listing.count
+	end
+
+	def index
+		render json: Listing.all
 	end
 
 	def search
