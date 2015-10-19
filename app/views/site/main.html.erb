@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <% api_key = (Rails.env.production? ? ENV['google_maps_api_key'] : '') %>
+  <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places,key=<%= api_key %>">
+  </script>
+  <script src="https://widget.cloudinary.com/global/all.js" type="text/javascript">
+  </script>
+  <script type="text/javascript" charset="utf-8">
+    window.CLOUDINARY_SETTINGS = {
+      cloud_name: '<%= ENV['cloud_name'] %>',
+      upload_preset: '<%= ENV['upload_preset'] %>',
+      sources: ['local','url'],
+      theme: 'minimal'
+    }
+    window.LTYPES = ["listings", "JOB", "STARTUP", "EVENT", "WORKSPACE", "COMPANY"];
+  </script>
   <% if Time.now.hour > 17  || Time.now.hour < 7 %>
     <% img_src = "pm-bannersm.jpg" %>
     <% logo_src = "site-logowhite.png" %>
@@ -12,9 +27,6 @@
     <% color = "black" %>
     <% s_color = "white" %>
   <% end %>
-  <script>
-    window.LOGOSRC = '<%= logo_src %>';
-  </script>
 </head>
 <body>
   <div id="searchbar" style="background-image: url('assets/<%= img_src %>'); color:<%= color %>;text-shadow:0 1px 1px <%= s_color %>"></div>

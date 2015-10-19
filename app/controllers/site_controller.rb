@@ -5,6 +5,7 @@ class SiteController < ApplicationController
   end
 
   def home
+    @user = User.new
     render :home
   end
 end

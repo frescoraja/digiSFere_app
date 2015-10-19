@@ -21,57 +21,11 @@
     </span>
   </div>
 </div>
-<div class="new-session-form">
-  <div class="welcome-form">
-    <h1>Log In</h1>
 
-    <form action="<%= session_url %>" method="post">
-      <%= csrf_token %>
-      <div class="row">
-        <input type="text"
-               name="user[username]"
-               id="login-username">
-      </div>
-      <div class="row">
-        <input type="password"
-               name="user[password]"
-               id="login-password">
-      </div>
-      <input id="sign-in-btn" type="submit" value="Sign In">
-    </form>
-    <input type="submit" id="guestsubmit" value="Guest Sign In">
-    <p class="toggle-form">
-      Want to sign up?
-    </p>
-    <div class="error">
-    </div>
-  </div>
-</div>
+<%= render "new_session" %>
 
-<div class="new-user-form">
-  <div class="welcome-form">
-    <h1>Sign Up</h1>
-    <form action="<%= users_url %>" method="POST">
-      <%= csrf_token %>
-        <input type="text"
-               name="user[username]"
-               id="new-username"
-               placeholder="username">
+<%= render "new_user" %>
 
-        <input type="password"
-               name="user[password]"
-               id="new-password"
-               placeholder="password">
-
-      <input type="submit" value="Create User">
-    </form>
-    <p class="toggle-form">
-      Already a User?
-    </p>
-    <div class="error">
-    </div>
-  </div>
-</div>
 
 <script>
 

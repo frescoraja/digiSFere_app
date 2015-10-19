@@ -1,0 +1,16 @@
+<div class="new-user-form">
+  <div class="welcome-form">
+    <h1>Sign Up</h1>
+    <%= form_for @user do |f| %>
+        <%= f.text_field :username %>
+        <%= f.password_field :password %>
+    <% end %>
+    <button id="create">Create User</button>
+    <p class="toggle-form">
+      Already a User?
+    </p>
+    <div class="error">
+      <%= render "layouts/errors" %>
+    </div>
+  </div>
+</div>
