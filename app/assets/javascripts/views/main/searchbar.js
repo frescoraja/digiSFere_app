@@ -34,6 +34,32 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
 
   triggerSearch: function (event) {
     event.preventDefault();
+    var opts = {
+          lines: 13,
+          length: 28,
+          width: 14,
+          radius: 42,
+          scale: 0.5,
+          corners: 1.0,
+          opacity: 0.25,
+          rotate: 0,
+          direction: 1,
+          speed: 1,
+          trail: 60,
+          fps: 20,
+          zIndex: 10000,
+          className: 'spinner',
+          top: '20%',
+          left: '50%',
+          shade: true,
+          hwaccel: true,
+          position: 'absolute'
+        },
+        spinner = new Spinner(opts).spin(),
+        $spinner = spinner.el,
+        $list = $('.listingsindex-view');
+    $list.empty();
+    $list.append($spinner);
     var searchParams = $('.banner-input-field').val();
     this.collection.filterData.query = searchParams;
     this.collection.filter();

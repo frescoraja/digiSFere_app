@@ -18,25 +18,48 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
 
   addNewListing: function (event) {
     event.preventDefault();
+    var $form = $('.new-listing'),
+        title = $form.find('input')[0];
+    if (title.value.length === 0) {
+      alert("Please provide a title");
+      return;
+    }
+    var opts = {
+          lines: 13,
+          length: 28,
+          width: 14,
+          radius: 42,
+          scale: 0.5,
+          corners: 1.0,
+          opacity: 0.25,
+          rotate: 0,
+          direction: 1,
+          speed: 1,
+          trail: 60,
+          fps: 20,
+          zIndex: 10000,
+          className: 'spinner',
+          top: '50%',
+          left: '50%',
+          shade: true,
+          hwaccel: true,
+          position: 'absolute'
+        },
+        spinner = new Spinner(opts).spin(),
+        $spinner = spinner.el;
     var newListing = new DigiSFere.Models.Listing(),
-      listings = this.collection;
-    var params = $('.new-listing').serializeJSON().listing;
+        listings = this.collection;
+    var params = $form.serializeJSON().listing;
+    var formHTML = $('.new-listing-form-container');
+    var $modal = $('.new-listing-modal');
+    formHTML.remove();
+    $modal.append($spinner);
     newListing.set(params);
     newListing.save({}, {
       success: function () {
         listings.add(newListing);
         this.remove();
-      }.bind(this),
-      error: function (model, response) {
-        $errs = $('<ul>').addClass("errors");
-        $('body').prepend($errs);
-        response.responseJSON.forEach(function (error) {
-          $errs.append($('<li>').text(error));
-        });
-        setTimeout(function () {
-          $('.errors').remove();
-        }, 2000);
-      }
+      }.bind(this)
     });
   },
 

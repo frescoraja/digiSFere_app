@@ -27,12 +27,6 @@
   $s_color: "black";
 <% end %>
 
-#searchbar {
-  background-image: url($img_src);
-  color: $color;
-  text-shadow: 0 1px 1px $s_color;
-}
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -487,6 +481,7 @@ ul.listings-list {
   left: 0;
   display: inline-block;
   overflow-y: auto;
+  position: relative;
 }
 
 .map {
@@ -615,6 +610,9 @@ ul.listings-list {
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4);
   background-size: cover;
   background-position: center;
+  background-image: url($img_src);
+  color: $color;
+  text-shadow: 0 1px 1px $s_color;
 }
 
 .searchbar-view {

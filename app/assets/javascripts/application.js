@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.geocomplete
+//= require spin.min
 //= require upload_img_widget
 //= require underscore
 //= require markerclusterer
