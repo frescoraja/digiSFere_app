@@ -6,7 +6,7 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <% api_key = (Rails.env.production? ? ENV['google_maps_api_key'] : '') %>
+  <% api_key = (Rails.env.production? ? ENV['google_maps_api_key'] : 'ra') %>
   <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?libraries=places,key=<%= api_key %>">
   </script>
@@ -20,7 +20,7 @@
       theme: 'minimal'
     }
     window.LTYPES = ["listings", "JOB", "STARTUP", "EVENT", "WORKSPACE", "COMPANY"];
-    window.api_key = '<%= ENV['google_maps_api_key'] %>';
+    window.api_key = '<%= api_key %>';
   </script>
   <%= csrf_meta_tags %>
 </head>

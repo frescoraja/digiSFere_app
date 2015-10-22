@@ -15,16 +15,16 @@
  */
 <% lcolors= { job: '#5297ff', startup: '#e74848', event: '#c481ff', workspace: '#79faa1', company: '#ffe663' } %>
 
-<% if Time.now.hour > 17  || Time.now.hour < 7 %>
-  $img_src: "pm-bannersm.jpg";
-  $logo_src: "site-logowhite.png";
-  $color: "white";
-  $s_color: "black";
-<% else %>
+<% if Time.now.hour.between?(7, 17) %>
   $img_src: "am-bannersm.jpg";
   $logo_src: "site-logoblack.png";
   $color: "black";
   $s_color: "white";
+<% else %>
+  $img_src: "pm-bannersm.jpg";
+  $logo_src: "site-logowhite.png";
+  $color: "white";
+  $s_color: "black";
 <% end %>
 
 #searchbar {
@@ -612,8 +612,7 @@ ul.listings-list {
   min-width: 1050px;
   height: 200px;
   font-family: 'Josefin Sans', serif;
-  // text-shadow: 0 1px 1px #000;
-  // box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4);
   background-size: cover;
   background-position: center;
 }
