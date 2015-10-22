@@ -20,6 +20,7 @@
 //= require serializejson
 //= require backbone
 //= require digisfere
+//= require signout
 //= require welcome
 //= require_tree ../templates
 //= require_tree ./models
