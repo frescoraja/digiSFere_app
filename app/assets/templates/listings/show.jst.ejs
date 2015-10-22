@@ -47,14 +47,14 @@
     <iframe
       width="100%"
       height="500px"
-      src="https://www.google.com/maps/embed/v1/place?key=<%= GOOGLE_API_KEY %>&q=<%= encodeURIComponent(listing.get('address')) %>">
+      src="https://www.google.com/maps/embed/v1/place?key=<%= api_key %>&q=<%= encodeURIComponent(listing.get('address')) %>">
     </iframe>
   </div>
   <div class="street-view">
     <iframe
       width="100%"
       height="280px"
-      src="https://www.google.com/maps/embed/v1/streetview?key=<%= GOOGLE_API_KEY %>&location=<%= listing.escape('latitude') %>,<%= listing.escape('longitude') %>">
+      src="https://www.google.com/maps/embed/v1/streetview?key=<%= api_key %>&location=<%= listing.escape('latitude') %>,<%= listing.escape('longitude') %>">
     </iframe>
   </div>
 </div>

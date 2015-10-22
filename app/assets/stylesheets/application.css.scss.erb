@@ -13,7 +13,25 @@
  *= require_tree .
  *= require_self
  */
-<% lcolors = { job: '#5297ff', startup: '#e74848', event: '#c481ff', workspace: '#79faa1', company: '#ffe663' } %>
+<% lcolors= { job: '#5297ff', startup: '#e74848', event: '#c481ff', workspace: '#79faa1', company: '#ffe663' } %>
+
+<% if Time.now.hour > 17  || Time.now.hour < 7 %>
+  $img_src: "pm-bannersm.jpg";
+  $logo_src: "site-logowhite.png";
+  $color: "white";
+  $s_color: "black";
+<% else %>
+  $img_src: "am-bannersm.jpg";
+  $logo_src: "site-logoblack.png";
+  $color: "black";
+  $s_color: "white";
+<% end %>
+
+#searchbar {
+  background-image: url($img_src);
+  color: $color;
+  text-shadow: 0 1px 1px $s_color;
+}
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -311,23 +329,23 @@ a.new:focus {
 }
 
 .num-companies, .glyphicon.companies {
-  color: <%= lcolors[:company] %>;
+  color:  <%= lcolors[:company] %>;
 }
 
 .num-jobs, .glyphicon.jobs {
-  color: <%= lcolors[:job] %>;
+  color:  <%= lcolors[:job] %>;
 }
 
 .num-workspaces, .glyphicon.workspaces {
-  color: <%= lcolors[:workspace] %>;
+  color:  <%= lcolors[:workspace] %>;
 }
 
 .num-startups, .glyphicon.startups {
-  color: <%= lcolors[:startup] %>;
+  color:  <%= lcolors[:startup] %>;
 }
 
 .num-events, .glyphicon.events {
-  color: <%= lcolors[:event] %>;
+  color:  <%= lcolors[:event] %>;
 }
 
 .clicked {
@@ -426,23 +444,23 @@ ul.listings-list {
 }
 
 .JOB {
-  background-color: <%= lcolors[:job] %>;
+  background-color:  <%= lcolors[:job] %>;
 }
 
 .STARTUP {
-  background-color: <%= lcolors[:startup] %>;
+  background-color:  <%= lcolors[:startup] %>;
 }
 
 .COMPANY {
-  background-color: <%= lcolors[:company] %>;
+  background-color:  <%= lcolors[:company] %>;
 }
 
 .WORKSPACE {
-  background-color: <%= lcolors[:workspace] %>;
+  background-color:  <%= lcolors[:workspace] %>;
 }
 
 .EVENT {
-  background-color: <%= lcolors[:event] %>;
+  background-color:  <%= lcolors[:event] %>;
 }
 
 #content {
@@ -594,8 +612,8 @@ ul.listings-list {
   min-width: 1050px;
   height: 200px;
   font-family: 'Josefin Sans', serif;
-  text-shadow: 0 1px 1px #000;
-  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4);
+  // text-shadow: 0 1px 1px #000;
+  // box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4);
   background-size: cover;
   background-position: center;
 }

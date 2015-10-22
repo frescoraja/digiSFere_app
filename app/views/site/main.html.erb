@@ -1,82 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <% api_key = (Rails.env.production? ? ENV['google_maps_api_key'] : '') %>
-  <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?libraries=places,key=<%= api_key %>">
-  </script>
-  <script src="https://widget.cloudinary.com/global/all.js" type="text/javascript">
-  </script>
-  <script type="text/javascript" charset="utf-8">
-    window.CLOUDINARY_SETTINGS = {
-      cloud_name: '<%= ENV['cloud_name'] %>',
-      upload_preset: '<%= ENV['upload_preset'] %>',
-      sources: ['local','url'],
-      theme: 'minimal'
-    }
-    window.LTYPES = ["listings", "JOB", "STARTUP", "EVENT", "WORKSPACE", "COMPANY"];
-  </script>
-  <% if Time.now.hour > 17  || Time.now.hour < 7 %>
-    <% img_src = "pm-bannersm.jpg" %>
-    <% logo_src = "site-logowhite.png" %>
-    <% color = "white" %>
-    <% s_color = "black" %>
-  <% else %>
-    <% img_src = "am-bannersm.jpg" %>
-    <% logo_src = "site-logoblack.png" %>
-    <% color = "black" %>
-    <% s_color = "white" %>
-  <% end %>
-</head>
-<body>
-  <div id="searchbar" style="background-image: url('assets/<%= img_src %>'); color:<%= color %>;text-shadow:0 1px 1px <%= s_color %>"></div>
-  <div id="content" class="col-xs-10 col-xs-offset-1"></div>
-  <div id="sign-out">
-    Sign Out
-      <div class="vdivider"></div>
-      <span class="glyphicon glyphicon-log-out"></span>
-  </div>
-  <div id="footer">
-    <%= render "./layouts/footer" %>
-  </div>
-</body>
-</html>
+<div id="searchbar"></div>
+
+<div id="content" class="col-xs-10 col-xs-offset-1"></div>
+
+<div id="sign-out">
+  Sign Out
+    <div class="vdivider"></div>
+    <span class="glyphicon glyphicon-log-out"></span>
+</div>
+
+<div id="footer">
+  <%= render "./layouts/footer" %>
+</div>
 
 <script>
-  var idleTime = 0;
   $(document).ready(function () {
     DigiSFere.initialize();
-
-    $('#sign-out').click(function (e) {
-      signOut();
-    });
-
-    var idleInterval = setInterval(timerCount, 60000);
-
-    $(this).mousemove(function (e) {
-      idleTime = 0;
-    });
-
-    $(this).keypress(function (e) {
-      idleTime = 0;
-    });
-
-    function timerCount () {
-      if (++idleTime > 9) {
-        signOut();
-        clearInterval(idleInterval);
-      }
-    }
-
-    function signOut () {
-    $.ajax({
-      type: 'post',
-      url: '/session',
-      data: {'_method':'delete'},
-      complete: function () {
-        location.href = '/';
-      }
-    });
-    }
+    DigiSFere.signout();
   });
 </script>
