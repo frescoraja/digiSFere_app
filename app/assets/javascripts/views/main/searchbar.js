@@ -8,14 +8,7 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
     'focus .banner-input-field': 'hidePlaceholder',
     'blur .banner-input-field': 'revealPlaceholder',
     'submit .banner-input': 'triggerSearch',
-    'click .banner-search-button': 'checkSearch'
-  },
-
-  checkSearch: function (event) {
-    if ($('.banner-input-field').val() === '') {
-      $('.banner-input-field').submit();
-      $('.banner-input-field').blur();
-    }
+    'click .banner-search-button': 'triggerSearch'
   },
 
   hidePlaceholder: function (event) {
@@ -63,6 +56,9 @@ DigiSFere.Views.SearchBar = Backbone.View.extend({
     var searchParams = $('.banner-input-field').val();
     this.collection.filterData.query = searchParams;
     this.collection.filter();
+    if ($('.content-view').length === 0) {
+      Backbone.history.navigate("", { trigger: true });
+    }
   },
 
   render: function () {

@@ -20,7 +20,7 @@ DigiSFere.Views.ListingShow = Backbone.View.extend({
   },
 
   goToMain: function (event) {
-    Backbone.history.history.back();
+    Backbone.history.navigate("", { trigger: true });
   },
 
   highlightQuery: function () {
@@ -28,7 +28,7 @@ DigiSFere.Views.ListingShow = Backbone.View.extend({
 
     if (terms.length > 0) {
       for (var i in terms) {
-        $(this.el).highlight(terms[i]);
+        $('.listing-show-info').highlight(terms[i]);
       }
       var cat = this.categories[this.model.get('category')];
       $('.highlight').addClass(cat);
