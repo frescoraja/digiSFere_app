@@ -10,6 +10,7 @@ DigiSFere.Views.ListingShow = Backbone.View.extend({
 
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
+    this.categories = ["nada", "job", "startup", "event", "workspace", "company"];
   },
 
   openWindow: function (event) {
@@ -19,7 +20,19 @@ DigiSFere.Views.ListingShow = Backbone.View.extend({
   },
 
   goToMain: function (event) {
-    Backbone.history.navigate('', { trigger: true });
+    Backbone.history.history.back();
+  },
+
+  highlightQuery: function () {
+    var terms = $('.banner-input-field').val().split(" ");
+
+    if (terms.length > 0) {
+      for (var i in terms) {
+        $(this.el).highlight(terms[i]);
+      }
+      var cat = this.categories[this.model.get('category')];
+      $('.highlight').addClass(cat);
+    }
   },
 
   shortenURL: function () {
@@ -39,6 +52,7 @@ DigiSFere.Views.ListingShow = Backbone.View.extend({
     });
     this.$el.html(content);
     this.shortenURL();
+    this.highlightQuery();
     return this;
   }
 });
