@@ -1,7 +1,3 @@
-if (typeof DigiSFere === 'undefined') {
-  window.DigiSFere = {};
-}
-
 DigiSFere.welcome = function () {
   $('.enter-site').click(function () {
     $('.error').empty();
