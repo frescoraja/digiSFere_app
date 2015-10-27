@@ -77,7 +77,7 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
     this.remove();
   },
 
-  newListingImg: function () {
+  newListingImg: function (event) {
     event.preventDefault();
     cloudinary.openUploadWidget(window.CLOUDINARY_SETTINGS,
     function(error, result) {
