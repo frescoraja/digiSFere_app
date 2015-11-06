@@ -19,12 +19,6 @@
 
 <% lcolors = { job: '#5297ff', startup: '#e74848', event: '#c481ff', workspace: '#79faa1', company: '#ffe663' } %>
 
-<% if Time.now.hour.between?(7, 17) %>
-  <% options = { img: 'am-bannersm.jpg', color: 'black', s_color: 'white' } %>
-<% else %>
-  <% options = { img: 'pm-bannersm.jpg', color: 'white', s_color: 'black' } %>
-<% end %>
-
 html, body {
   margin: 0;
   height: 100%;
@@ -605,9 +599,6 @@ ul.listings-list {
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.4);
   background-size: cover;
   background-position: center;
-  background-image: url(<%= options[:img] %>);
-  color: <%= options[:color] %>;
-  text-shadow: 0 1px 1px <%= options[:s_color] %>;
 }
 
 .searchbar-view {

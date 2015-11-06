@@ -61,9 +61,10 @@ class Api::ListingsController < ApplicationController
 				term = "%#{qry}%"
 				listings = Arel::Table.new(:listings)
 
-				results = results.merge(results.where(listings[:title].matches(term)
-							 .or(listings[:about].matches(term)
-							 .or(listings[:website].matches(term)))))
+				results.merge!(results.where(listings[:title].matches(term)
+							 .or(listings[:about].matches(term))
+							 .or(listings[:address].matches(term))
+							 .or(listings[:website].matches(term))))
 			end
 		end
 

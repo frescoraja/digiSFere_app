@@ -16,5 +16,16 @@
   $(document).ready(function () {
     DigiSFere.initialize();
     DigiSFere.signout();
+
+    var time = new Date(),
+        hour = time.getHours(),
+        banner = document.getElementById('searchbar'),
+        css;
+    if (hour < 7 || hour > 18) {
+      css = 'background-image: url("assets/pm-bannersm.jpg")';
+    } else {
+      css = 'background-image: url("assets/am-bannersm.jpg")';
+    }
+    banner.setAttribute('style', css);
   });
 </script>
