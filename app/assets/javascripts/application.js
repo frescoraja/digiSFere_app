@@ -18,7 +18,6 @@
 //= require spin.min
 //= require upload_img_widget
 //= require underscore
-//= require markerclusterer
 //= require serializejson
 //= require backbone
 //= require digisfere
