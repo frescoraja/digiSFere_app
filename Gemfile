@@ -4,7 +4,6 @@ gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
 gem 'geocoder'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -25,4 +24,8 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'heroku-deflater', group: :production
+group :production do
+  gem 'heroku-deflater'
+  gem 'rails_12factor'
+  gem 'puma'
+end
