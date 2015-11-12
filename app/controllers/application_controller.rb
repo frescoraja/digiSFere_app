@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_filter :expire_hosts
   helper_method :current_user, :require_user!
 
   def current_user
@@ -24,5 +25,9 @@ class ApplicationController < ActionController::Base
   def sign_out
     current_user.try(:remove_token, session[:session_token])
     session[:session_token] = nil
+  end
+
+  def expire_hosts
+    response.headers["Strict-Transport-Security"] = 'max-age=0'
   end
 end
