@@ -36,20 +36,20 @@ Backbone.CompositeView = Backbone.View.extend({
       });
     });
   },
-
-  attachSubviewsSorted: function () {
-    var view = this;
-    this.subviews().each(function (selectorSubviews, selector) {
-      view.$(selector).empty();
-      DigiSFere._SORTBY.forEach(function (cat) {
-        selectorSubviews.each(function (subview) {
-          if (subview.model.get('category') === cat) {
-            view.attachSubview(selector, subview);
-          }
-        });
-      });
-    });
-  },
+  // 
+  // attachSubviewsSorted: function () {
+  //   var view = this;
+  //   this.subviews().each(function (selectorSubviews, selector) {
+  //     view.$(selector).empty();
+  //     DigiSFere._SORTBY.forEach(function (cat) {
+  //       selectorSubviews.each(function (subview) {
+  //         if (subview.model.get('category') === cat) {
+  //           view.attachSubview(selector, subview);
+  //         }
+  //       });
+  //     });
+  //   });
+  // },
 
   // attachSubviewsSorted: function (page) {
   //   var view = this,

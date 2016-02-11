@@ -1,4 +1,4 @@
-DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
+DigiSFere.Views.ListingsIndex = Backbone.SortedSubview.extend({
 	className: 'listingsindex-view',
 
 	template: JST['listings/index'],
@@ -79,7 +79,7 @@ DigiSFere.Views.ListingsIndex = Backbone.CompositeView.extend({
 	render: function () {
 		var content = this.template();
 		this.$el.html(content);
-		this.attachSubviewsSorted(this.page);
+		this.attachSubviewsSorted(DigiSFere._SORTBY);
 		this.updateHeader();
 		return this;
 	}

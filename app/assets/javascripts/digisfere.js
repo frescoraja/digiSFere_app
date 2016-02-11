@@ -4,6 +4,7 @@ window.DigiSFere = {
   Views: {},
   Routers: {},
   initialize: function() {
+    this._SORTBY = [1,2,3,4,5];
     var $rootEl = $('#content');
     var listings = new DigiSFere.Collections.Listings();
     var searchbar = new DigiSFere.Views.SearchBar({
@@ -23,7 +24,7 @@ window.DigiSFere = {
         DigiSFere.TOTAL = listings.size();
       }
     });
-    
+
     Backbone.history.start();
   }
 };
