@@ -11,7 +11,7 @@ DigiSFere.Routers.Router = Backbone.Router.extend({
 	},
 
 	main: function () {
-		DigiSFere._SORTBY = [1,2,3,4,5];
+		// DigiSFere._SORTBY = [1,2,3,4,5];
 		var mainView = new DigiSFere.Views.Main({
 			collection: this.listings
 		});
