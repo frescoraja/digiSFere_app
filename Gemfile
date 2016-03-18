@@ -19,12 +19,19 @@ gem 'rack-timeout'
 gem 'puma'
 
 group :development, :test do
+  gem 'capybara'
   gem 'byebug'
   gem 'binding_of_caller'
+  gem 'launchy'
+  gem 'poltergeist'
   gem 'better_errors'
   gem 'pry-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'quiet_assets'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 
 group :production do
