@@ -15,7 +15,6 @@ window.DigiSFere = {
 
     new DigiSFere.Routers.Router({
       $rootEl: $rootEl,
-      listings: listings,
       searchbar: searchbar
     });
 
