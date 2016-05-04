@@ -54,7 +54,7 @@
     <iframe
       width="100%"
       height="280px"
-      src="https://www.google.com/maps/embed/v1/streetview?&key=<%= api_key %>&location=<%= listing.escape('latitude') %>,<%= listing.escape('longitude') %>">
+      src="https://www.google.com/maps/embed/v1/streetview?&location=<%= encodeURIComponent(listing.escape('latitude')) %>,<%= encodeURIComponent(listing.escape('longitude')) %>&key=<%= api_key %>">
     </iframe>
   </div>
 </div>
