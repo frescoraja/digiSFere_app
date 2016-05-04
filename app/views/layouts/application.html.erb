@@ -10,7 +10,7 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application' %>
-  <% api_key = (Rails.env.production? ? ENV['google_maps_api_key'] : '') %>
+  <% api_key = ENV['google_maps_api_key'] %>
 
 
 

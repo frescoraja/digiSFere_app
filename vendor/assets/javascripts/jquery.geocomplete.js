@@ -1,8 +1,8 @@
 /**
- * jQuery Geocoding and Places Autocomplete Plugin - V 1.6.5
+ * jQuery Geocoding and Places Autocomplete Plugin - V 1.7.0
  *
- * @author Martin Kleppe <kleppe@ubilabs.net>, 2014
- * @author Ubilabs http://ubilabs.net, 2014
+ * @author Martin Kleppe <kleppe@ubilabs.net>, 2016
+ * @author Ubilabs http://ubilabs.net, 2016
  * @license MIT License <http://www.opensource.org/licenses/mit-license.php>
  */
 
@@ -19,6 +19,7 @@
   //
   // * `map` - Might be a selector, an jQuery object or a DOM element. Default is `false` which shows no map.
   // * `details` - The container that should be populated with data. Defaults to `false` which ignores the setting.
+  // * 'detailsScope' - Allows you to scope the 'details' container and have multiple geocomplete fields on one page. Must be a parent of the input. Default is 'null'
   // * `location` - Location to initialize the map on. Might be an address `string` or an `array` with [latitude, longitude] or a `google.maps.LatLng`object. Default is `false` which shows a blank map.
   // * `bounds` - Whether to snap geocode search to map bounds. Default: `true` if false search globally. Alternatively pass a custom `LatLngBounds object.
   // * `autoselect` - Automatically selects the highlighted item or the first item from the suggestions list on Enter.
@@ -42,6 +43,7 @@
     map: false,
     details: false,
     detailsAttribute: "name",
+    detailsScope: null,
     autoselect: true,
     location: false,
 
@@ -81,6 +83,12 @@
   function GeoComplete(input, options) {
 
     this.options = $.extend(true, {}, defaults, options);
+
+    // This is a fix to allow types:[] not to be overridden by defaults
+    // so search results includes everything
+    if (options && options.types) {
+      this.options.types = options.types;
+    }
 
     this.input = input;
     this.$input = $(input);
@@ -123,14 +131,14 @@
         'click',
         $.proxy(this.mapClicked, this)
       );
- 
+
       // add dragend even listener on the map
       google.maps.event.addListener(
         this.map,
         'dragend',
         $.proxy(this.mapDragged, this)
       );
-      
+
       // add idle even listener on the map
       google.maps.event.addListener(
         this.map,
@@ -247,8 +255,13 @@
     initDetails: function(){
       if (!this.options.details){ return; }
 
-      var $details = $(this.options.details),
-        attribute = this.options.detailsAttribute,
+      if(this.options.detailsScope) {
+        var $details = $(this.input).parents(this.options.detailsScope).find(this.options.details);
+      } else {
+        var $details = $(this.options.details);
+      }
+
+      var attribute = this.options.detailsAttribute,
         details = {};
 
       function setDetail(value){
@@ -351,8 +364,8 @@
       }
 
       // Get the first suggestion's text.
-      var $span1 = $(".pac-container:last .pac-item" + selected + ":first span:nth-child(2)").text();
-      var $span2 = $(".pac-container:last .pac-item" + selected + ":first span:nth-child(3)").text();
+      var $span1 = $(".pac-container:visible .pac-item" + selected + ":first span:nth-child(2)").text();
+      var $span2 = $(".pac-container:visible .pac-item" + selected + ":first span:nth-child(3)").text();
 
       // Adds the additional information, if available.
       var firstResult = $span1;
@@ -499,7 +512,7 @@
     mapClicked: function(event) {
         this.trigger("geocode:click", event.latLng);
     },
-   
+
     // Fire the "geocode:mapdragged" event and pass the current position of the map center.
     mapDragged: function(event) {
       this.trigger("geocode:mapdragged", this.map.getCenter());
