@@ -1,0 +1,62 @@
+
+-----------------------------------------------------------------
+  pg_upgrade run on Fri May 20 00:12:11 2016
+-----------------------------------------------------------------
+
+You must identify the directory where the old cluster binaries reside.
+Please use the -b command-line option or the PGBINOLD environment variable.
+
+-----------------------------------------------------------------
+  pg_upgrade run on Fri May 20 00:14:04 2016
+-----------------------------------------------------------------
+
+You must identify the directory where the old cluster binaries reside.
+Please use the -b command-line option or the PGBINOLD environment variable.
+
+-----------------------------------------------------------------
+  pg_upgrade run on Fri May 20 00:17:53 2016
+-----------------------------------------------------------------
+
+You must identify the directory where the old cluster binaries reside.
+Please use the -b command-line option or the PGBINOLD environment variable.
+
+-----------------------------------------------------------------
+  pg_upgrade run on Fri May 20 00:20:01 2016
+-----------------------------------------------------------------
+
+Performing Consistency Checks
+-----------------------------
+Checking cluster versions                                   ok
+
+*failure*
+Consult the last few lines of "pg_upgrade_server.log" for
+the probable cause of the failure.
+
+connection to database failed: could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/Users/frescoraja/Documents/Development/projects/workspace/digiSFere/.s.PGSQL.50432"?
+
+could not connect to old postmaster started with the command:
+"/Users/frescoraja/Downloads/Postgres94.app/Contents/Versions/9.4/bin/pg_ctl" -w -l "pg_upgrade_server.log" -D "/Users/frescoraja/Library/Application Support/Postgres/var-9.4" -o "-p 50432 -b  -c listen_addresses='' -c unix_socket_permissions=0700 -c unix_socket_directories='/Users/frescoraja/Documents/Development/projects/workspace/digiSFere'" start
+
+-----------------------------------------------------------------
+  pg_upgrade run on Fri May 20 00:20:20 2016
+-----------------------------------------------------------------
+
+
+*failure*
+Consult the last few lines of "pg_upgrade_server.log" for
+the probable cause of the failure.
+There seems to be a postmaster servicing the new cluster.
+Please shutdown that postmaster and try again.
+
+-----------------------------------------------------------------
+  pg_upgrade run on Fri May 20 00:20:29 2016
+-----------------------------------------------------------------
+
+
+*failure*
+Consult the last few lines of "pg_upgrade_server.log" for
+the probable cause of the failure.
+There seems to be a postmaster servicing the new cluster.
+Please shutdown that postmaster and try again.
