@@ -1,6 +1,6 @@
 # digiSFere
 
-[Live](http://www.digisfere.io)
+[Live](http://digisfere.herokuapp.com/)
 
 <img src="https://dl.dropboxusercontent.com/s/bzfcl6y2mni4ud7/loginsm.png" width="45%">
 <img src="https://dl.dropboxusercontent.com/s/p03py5fukzj4ken/mainpage1sm.png" width="45%">
