@@ -4,7 +4,6 @@ DigiSFere.Views.Main = Backbone.CompositeView.extend({
   className: 'content-view',
 
   initialize: function () {
-    this.addSearchBarView();
     this.addMapView();
     this.addListingsView();
     this.addFilterBarView();
@@ -30,13 +29,6 @@ DigiSFere.Views.Main = Backbone.CompositeView.extend({
       collection: this.collection
     });
     this.addSubview('.map', this.mapView);
-  },
-
-  addSearchBarView: function() {
-    this.searchBarView = new DigiSFere.Views.SearchBar({
-      collection: this.collection
-    });
-    this.addSubview('#searchbar', this.searchBarView);
   },
 
   render: function () {
