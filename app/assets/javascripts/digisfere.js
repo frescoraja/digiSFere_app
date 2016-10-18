@@ -15,13 +15,8 @@ window.DigiSFere = {
 
     new DigiSFere.Routers.Router({
       $rootEl: $rootEl,
-      searchbar: searchbar
-    });
-
-    listings.fetch({
-      success: function () {
-        DigiSFere.TOTAL = listings.size();
-      }
+      searchbar: searchbar,
+      listings: listings
     });
 
     Backbone.history.start();

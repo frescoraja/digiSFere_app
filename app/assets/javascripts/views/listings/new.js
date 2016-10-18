@@ -59,7 +59,11 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
       success: function () {
         listings.add(newListing);
         this.remove();
-      }.bind(this)
+      }.bind(this),
+      error: function(err, text) {
+        console.log(err, text);
+        $spinner.remove();
+      }
     });
   },
 

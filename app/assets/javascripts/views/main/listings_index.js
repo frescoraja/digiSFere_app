@@ -12,9 +12,9 @@ DigiSFere.Views.ListingsIndex = Backbone.SortedSubview.extend({
 	initialize: function (options) {
 		// this.page = this.collection.filterData.page;
 		this._map = options.map;
-		this.listenTo(this.collection, 'sort sync', this.render);
-		this.listenTo(this.collection, 'add', this.addListing);
-		this.listenTo(this.collection, 'remove', this.removeListing);
+		this.listenTo(this.collection, 'sort filter', this.render);
+    this.listenTo(this.collection, 'add', this.addListing);
+    this.listenTo(this.collection, 'remove', this.removeListing);
 		this.collection.each(this.addListing.bind(this));
 	},
 
@@ -23,6 +23,7 @@ DigiSFere.Views.ListingsIndex = Backbone.SortedSubview.extend({
 			model: listing
 		});
 		this.addSubview('.listings-list', listingItemView);
+    this.collection.trigger('sort');
 	},
 
 	removeListing: function (listing) {
@@ -34,23 +35,7 @@ DigiSFere.Views.ListingsIndex = Backbone.SortedSubview.extend({
 		this._map.toggleBounce(listingId);
 	},
 
-	updateCounts: function () {
-		var collection = this.collection,
-				count, total;
-		$.ajax('api/listings/count',
-					 {success: function (res) {
-						 total = res;
-						 count = collection.size();
-						 $('.idxcount').text(count);
-						 $('.total').text(total);
-						 if (count === 0) {
-							 $('.list-item-header-content')
-							 	.text('No results found..');
-						 }
-					 }});
-	},
-
-	updateHeader: function () {
+  updateCategories: function () {
 		var categories = ['Jobs','Startups','Events','Workspaces','Companies'];
 		var headingStrings = [];
 		var self = this;
@@ -61,8 +46,27 @@ DigiSFere.Views.ListingsIndex = Backbone.SortedSubview.extend({
 		});
 		headingStrings = headingStrings.join(', ');
 		$('.list-item-header-content').append(headingStrings);
-		this.updateCounts();
+
+    return this;
 	},
+
+	updateCounts: function () {
+    var size = this.collection.size();
+    var counts = this.collection._counts;
+    var total = counts ? counts.whitelisted : 0;
+    $('.idxcount').text(size);
+    $('.total').text(total);
+    if (size === 0) {
+      $('.list-item-header-content')
+        .text('No results found...');
+    }
+
+    return this;
+	},
+
+	updateHeader: function () {
+    this.updateCategories().updateCounts();
+  },
 
 	// updatePage: function () {
 	// 	var totalPgs = Math.ceil(this.total / 10);
@@ -79,8 +83,8 @@ DigiSFere.Views.ListingsIndex = Backbone.SortedSubview.extend({
 	render: function () {
 		var content = this.template();
 		this.$el.html(content);
+    this.updateHeader();
 		this.attachSubviewsSorted(DigiSFere._SORTBY);
-		this.updateHeader();
 		return this;
 	}
 });

@@ -1,3 +1,3 @@
 DigiSFere.Models.Listing = Backbone.Model.extend({
-	urlRoot: '/api/listings'
+	urlRoot: '/api/listings',
 });

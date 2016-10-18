@@ -12,9 +12,20 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
 		};
 	},
 
+  parse: function(response) {
+    var listings = response.listings;
+    this._counts = response.counts;
+    return listings;
+  },
+
 	filter: function () {
+    var collection = this;
+
 		this.fetch({
 			data: { filter_data: this.filterData },
+      success: function(req, res, xhr) {
+        collection.trigger('filter');
+      }
     });
 	},
 
@@ -33,14 +44,5 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
   	}
 
   	return listing;
-  },
-
-	total: function () {
-    var collection = this;
-    $.ajax('api/listings/count',
-           {success: function (res) {
-             collection._total = res;
-           }});
-    return;
   }
 });

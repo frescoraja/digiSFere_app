@@ -18,10 +18,11 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
       containment: 'parent',
       cursor: 'move',
       stop: function (event, obj) {
-        DigiSFere._SORTBY = [];
-        _.forEach($('li.category'),(function (li) {
-          DigiSFere._SORTBY.push($(li).data('id'));
+        var sortBy = [];
+        _.forEach($('li.category'), (function (li) {
+          sortBy.push($(li).data('id'));
         }));
+        DigiSFere._SORTBY = sortBy;
         view.collection.trigger('sort');
       }
     });
@@ -45,12 +46,18 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
   },
 
   count: function () {
-    this._counts = this.collection.countBy('category');
-    $('.num-jobs').text(this._counts[1] || 0);
-    $('.num-startups').text(this._counts[2] || 0);
-    $('.num-events').text(this._counts[3] || 0);
-    $('.num-workspaces').text(this._counts[4] || 0);
-    $('.num-companies').text(this._counts[5] || 0);
+    var counts = this.collection.countBy('category');
+    var categoryFilter = this.collection.filterData.category;
+    var jobCount = categoryFilter.indexOf(1) >= 0 ? '' : counts[1] || 0;
+    var startupCount = categoryFilter.indexOf(2) >= 0 ? '' : counts[2] || 0;
+    var eventCount = categoryFilter.indexOf(3) >= 0 ? '' : counts[3] || 0;
+    var workspaceCount = categoryFilter.indexOf(4) >= 0 ? '' : counts[4] || 0;
+    var companyCount = categoryFilter.indexOf(5) >= 0 ? '' : counts[5] || 0;
+    $('.num-jobs').text(jobCount);
+    $('.num-startups').text(startupCount);
+    $('.num-events').text(eventCount);
+    $('.num-workspaces').text(workspaceCount);
+    $('.num-companies').text(companyCount);
   },
 
   categoryFilter: function (event) {
@@ -76,12 +83,23 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
     this.modalView.delegateEvents();
   },
 
-  render: function () {
-    var content = this.template({
-      listings: this.collection
+  sortTiles: function() {
+    var tiles = this.$el.find('li');
+    var newTiles = [];
+    var sortOrder = DigiSFere._SORTBY;
+    var selector = '';
+    var self = this;
+    sortOrder.forEach(function(order) {
+      selector = 'li[data-id=' + order + ']';
+      newTiles.push(self.$el.find(selector));
     });
-    this.$el.html(content);
-    this.checkFilters();
+    newTiles.push(this.$el.find('.new-listing-tile'));
+    this.$el.html(newTiles);
+  },
+
+  render: function () {
+    this.$el.html(this.template());
+    this.sortTiles();
     this.count();
     return this;
   }
