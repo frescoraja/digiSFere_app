@@ -14,6 +14,8 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
     var view = this;
     this.$el.sortable({
       items: '> li',
+      helper: 'clone',
+      opacity: 1,
       tolerance: 'pointer',
       containment: 'parent',
       cursor: 'move',
@@ -61,6 +63,7 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
   },
 
   categoryFilter: function (event) {
+    event.preventDefault();
     var $filterTile = $(event.currentTarget);
     $filterTile.toggleClass('clicked');
     var filter = $filterTile.data('id'),
