@@ -12,19 +12,14 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
   events: {
     'click .submit': 'addNewListing',
     'click .img-upload': 'newListingImg',
-    'click .new-listing-backdrop': 'dismiss',
+    'click .new-listing-backdrop': 'remove',
     'change #category': 'changeButton',
   },
 
   addNewListing: function (event) {
     event.preventDefault();
     var $form = $('.new-listing'),
-        title = $form.find('input')[0];
-    if (title.value.length === 0) {
-      alert("Please provide a title");
-      return;
-    }
-    var opts = {
+        opts = {
           lines: 13,
           length: 28,
           width: 14,
@@ -62,8 +57,8 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
       }.bind(this),
       error: function(err, text) {
         console.log(err, text);
-        $spinner.remove();
-      }
+        this.remove();
+      }.bind(this)
     });
   },
 
@@ -75,10 +70,6 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
     $submitBtn.css('color', '#444');
     $submitBtn.css('background-color', cValue);
     $submitBtn.find('span').css('color', cValue);
-  },
-
-  dismiss: function () {
-    this.remove();
   },
 
   newListingImg: function (event) {

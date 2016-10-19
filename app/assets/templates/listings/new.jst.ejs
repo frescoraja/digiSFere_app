@@ -7,7 +7,9 @@
 			<label>Title:</label>
 			<input type="text"
 					 	 class="form-control"
-					 	 name="listing[title]">
+					 	 name="listing[title]"
+					 	 required
+			>
 		</div>
 
 		<div class="form-group">
@@ -21,7 +23,9 @@
 			<label>Address</label>
 			<input type="text"
 						 class="form-control address"
-					 	 name="listing[address]">
+					 	 name="listing[address]"
+					 	 required
+			>
 		</div>
 
 		<div class="form-group">
@@ -50,10 +54,12 @@
 			<input type="text"
 						 class="form-control"
 					 	 name="listing[website]"
-						 placeholder="www.example.com">
+						 placeholder="www.example.com"
+						 required
+			>
 		</div>
-		<div class="new-listing-submit-button disabled">Submit
+		<button class="new-listing-submit-button disabled">Submit
 			<span> > </span>
-		</div>
+		</button>
 	</form>
 </div>
