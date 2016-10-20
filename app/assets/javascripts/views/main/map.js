@@ -52,13 +52,34 @@ DigiSFere.Views.Map = Backbone.View.extend({
     }
   },
 
+  /*
+   * When the user stops moving the map,
+   * the bounds of the new map position are
+   * used to filter the collection.
+   */
   setBounds: function () {
+    /*
+     * Set new center point and zoom level
+     * on DigiSFere global object, so the
+     * map position is stored in state
+     */
+    DigiSFere.center = {
+      lat: this._map.getCenter().lat(),
+      lng: this._map.getCenter().lng()
+    };
+    DigiSFere.zoom = this._map.zoom;
+
+    // Get map's corner coordinates - NE and SW
     var bounds = this._map.getBounds();
     var ne = bounds.getNorthEast();
     var sw = bounds.getSouthWest();
+
+    // Set new map boundary filters
     this.collection.filterData.lat = [sw.lat(), ne.lat()];
     this.collection.filterData.lng = [sw.lng(), ne.lng()];
-		this.collection.filter();
+
+    // Then fetch collection based on filters
+    this.collection.filter();
 	},
 
   showMarkerInfo: function (event, marker, model) {
@@ -75,14 +96,13 @@ DigiSFere.Views.Map = Backbone.View.extend({
   },
 
   createMap: function () {
-
     var mapOptions = {
       disableDefaultUI: true,
       panControl: false,
       zoomControl: true,
       scaleControl: true,
-      center: { lat: 37.7833, lng: -122.4167 },
-      zoom: 14,
+      center: DigiSFere.center,
+      zoom: DigiSFere.zoom,
       mapTypeControlOptions: {
         mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
       }

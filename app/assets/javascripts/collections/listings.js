@@ -3,10 +3,10 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
 
   model: DigiSFere.Models.Listing,
 
-	initialize: function (bounds){
+	initialize: function (){
 		this.filterData = {
-			lat: bounds.lat,
-      lng: bounds.lng,
+      lat: [],
+      lng: [],
 			query: "",
 			category: []
 		};

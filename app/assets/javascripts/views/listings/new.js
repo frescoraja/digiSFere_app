@@ -52,11 +52,24 @@ DigiSFere.Views.NewListing = Backbone.View.extend({
     newListing.set(params);
     newListing.save({}, {
       success: function () {
+        /*
+         * Add new listing, then filter listings.
+         * This way, if new listing is not within
+         * current map bounds, or does not fit
+         * other filter criteria, it doesn't
+         * show up in the index
+        */
         listings.add(newListing);
+        listings.filter();
         this.remove();
       }.bind(this),
-      error: function(err, text) {
-        console.log(err, text);
+      error: function(listing, xhrReq, saveObj) {
+        console.log('Listing: ', listing);
+        console.log('XHR: ', xhrReq);
+        console.log('more info: ', saveObj);
+        var msg = 'Error: [' + xhrReq.status + '] ' + xhrReq.statusText;
+        msg += ', ' + xhrReq.responseText;
+        alert(msg);
         this.remove();
       }.bind(this)
     });

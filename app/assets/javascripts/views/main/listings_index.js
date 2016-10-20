@@ -12,8 +12,8 @@ DigiSFere.Views.ListingsIndex = Backbone.SortedSubview.extend({
 	initialize: function (options) {
 		// this.page = this.collection.filterData.page;
 		this._map = options.map;
-    this.listenTo(this.collection, 'update sort', this.render);
-    this.listenTo(this.collection, 'add', this.addListing, this.render);
+    this.listenTo(this.collection, 'sort filter', this.render);
+    this.listenTo(this.collection, 'add', this.addListing);
     this.listenTo(this.collection, 'remove', this.removeListing);
 		this.collection.each(this.addListing.bind(this));
 	},
@@ -22,7 +22,7 @@ DigiSFere.Views.ListingsIndex = Backbone.SortedSubview.extend({
 		var listingItemView = new DigiSFere.Views.ListingItem({
 			model: listing
 		});
-		this.addSubview('.listings-list', listingItemView, DigiSFere._SORTBY);
+		this.addSubview('.listings-list', listingItemView);
 	},
 
 	removeListing: function (listing) {
@@ -80,11 +80,10 @@ DigiSFere.Views.ListingsIndex = Backbone.SortedSubview.extend({
 	// },
 
 	render: function () {
-    this.collection.filter();
 		var content = this.template();
 		this.$el.html(content);
-    this.attachSubviewsSorted(DigiSFere._SORTBY);
     this.updateHeader();
+    this.attachSubviewsSorted(DigiSFere._SORTBY);
 		return this;
 	}
 });
