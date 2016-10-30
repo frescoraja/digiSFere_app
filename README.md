@@ -53,4 +53,6 @@ Unify views and forms with common CSS styling. Use Bootstrap CSS as foundation.
 
 ### Bonus Features (TBD)
 - [X] show listing details near pins on map
-- [ ] integrate 3rd party API for jobs listings
+- [X] save app state - preserve map location and order of filter tiles after
+  navigating away from main page
+- [ ] third party app integration for listings
