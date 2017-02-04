@@ -10,7 +10,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
+*.log
 /tmp
 
 # Ignore application configuration
 /config/application.yml
+.DS_Store
+.sublime*
+.npmrc
+.nvmrc
+.ruby-version
