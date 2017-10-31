@@ -1,17 +1,13 @@
 DigiSFere.signout = function () {
   var idleTime = 0;
 
-  $('#sign-out').click(function (e) {
+  $('#sign-out').click(function () {
     signOut();
   });
 
   var idleInterval = setInterval(timerCount, 60000);
 
-  $(this).mousemove(function (e) {
-    idleTime = 0;
-  });
-
-  $(this).keypress(function (e) {
+  $(this).keypress(function () {
     idleTime = 0;
   });
 
