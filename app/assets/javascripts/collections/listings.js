@@ -3,14 +3,14 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
 
   model: DigiSFere.Models.Listing,
 
-	initialize: function (){
-		this.filterData = {
+  initialize: function (){
+    this.filterData = {
       lat: [],
       lng: [],
-			query: "",
-			category: []
-		};
-	},
+      query: "",
+      category: []
+    };
+  },
 
   parse: function(response) {
     var listings = response.listings;
@@ -18,31 +18,31 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
     return listings;
   },
 
-	filter: function () {
+  filter: function () {
     var collection = this;
 
-		this.fetch({
-			data: { filter_data: this.filterData },
+    this.fetch({
+      data: { filter_data: this.filterData },
       success: function(req, res, xhr) {
         collection.trigger('filter');
       }
     });
-	},
+  },
 
   getOrFetch: function (id) {
-  	var listing = this.get(id),
-  		listings = this;
-  	if (!listing) {
-  		listing = new DigiSFere.Models.Listing({ id: id});
-  		listing.fetch({
-  			success: function () {
-  				listings.add(listing);
-  			}
-  		});
-  	} else {
-  		listing.fetch();
-  	}
+    var listing = this.get(id),
+      listings = this;
+    if (!listing) {
+      listing = new DigiSFere.Models.Listing({ id: id});
+      listing.fetch({
+        success: function () {
+          listings.add(listing);
+        }
+      });
+    } else {
+      listing.fetch();
+    }
 
-  	return listing;
+    return listing;
   }
 });
