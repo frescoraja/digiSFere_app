@@ -49,17 +49,11 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
 
   count: function () {
     var counts = this.collection.countBy('category');
-    var categoryFilter = this.collection.filterData.category;
-    var jobCount = categoryFilter.indexOf(1) >= 0 ? '' : counts[1] || 0;
-    var startupCount = categoryFilter.indexOf(2) >= 0 ? '' : counts[2] || 0;
-    var eventCount = categoryFilter.indexOf(3) >= 0 ? '' : counts[3] || 0;
-    var workspaceCount = categoryFilter.indexOf(4) >= 0 ? '' : counts[4] || 0;
-    var companyCount = categoryFilter.indexOf(5) >= 0 ? '' : counts[5] || 0;
-    $('.num-jobs').text(jobCount);
-    $('.num-startups').text(startupCount);
-    $('.num-events').text(eventCount);
-    $('.num-workspaces').text(workspaceCount);
-    $('.num-companies').text(companyCount);
+    $('.num-jobs').text(counts[1]);
+    $('.num-startups').text(counts[2]);
+    $('.num-events').text(counts[3]);
+    $('.num-workspaces').text(counts[4]);
+    $('.num-companies').text(counts[5]);
   },
 
   categoryFilter: function (event) {
@@ -104,6 +98,7 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
     this.$el.html(this.template());
     this.sortTiles();
     this.count();
+    this.checkFilters();
     return this;
   }
 });
