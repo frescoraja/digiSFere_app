@@ -16,8 +16,9 @@ class Api::ListingsController < ApplicationController
     filters = filter_options
     blacklist = filters[:category]
     whitelisted_listings = Listing.where.not(category: blacklist)
+    @bound_listings = find_bound_listings(whitelisted_listings, filters)
     @counts = {
-      whitelisted: find_bound_listings(whitelisted_listings, filters).count,
+      whitelisted: @bound_listings.count,
       total: Listing.count
     }
     @listings = filter_listings(filters).order("updated_at desc")

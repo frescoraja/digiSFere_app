@@ -1,3 +1,7 @@
+function countValue(val) {
+  return val || 0;
+}
+
 DigiSFere.Views.FilterBar = Backbone.View.extend({
   className: 'filterbar-view',
 
@@ -49,11 +53,11 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
 
   count: function () {
     var counts = this.collection.countBy('category');
-    $('.num-jobs').text(counts[1]);
-    $('.num-startups').text(counts[2]);
-    $('.num-events').text(counts[3]);
-    $('.num-workspaces').text(counts[4]);
-    $('.num-companies').text(counts[5]);
+    $('.num-jobs').text(countValue(counts[1]));
+    $('.num-startups').text(countValue(counts[2]));
+    $('.num-events').text(countValue(counts[3]));
+    $('.num-workspaces').text(countValue(counts[4]));
+    $('.num-companies').text(countValue(counts[5]));
   },
 
   categoryFilter: function (event) {
@@ -97,7 +101,6 @@ DigiSFere.Views.FilterBar = Backbone.View.extend({
   render: function () {
     this.$el.html(this.template());
     this.sortTiles();
-    this.count();
     this.checkFilters();
     return this;
   }

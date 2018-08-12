@@ -14,6 +14,7 @@ DigiSFere.Collections.Listings = Backbone.Collection.extend({
 
   parse: function(response) {
     var listings = response.listings;
+    this._bound_listings = response.bound_listings;
     this._counts = response.counts;
     return listings;
   },
